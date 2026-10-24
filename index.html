@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>My Risk Compass</title><meta name="theme-color" content="#020B2B">
+<title>My Risk Compass, a Foyer challenge</title><meta name="theme-color" content="#020B2B">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
 <style>:root{--navy:#041D58;--deep:#020B2B;--blue:#20439D;--bar:#2857C8;--lblue:#7C9ADE;--mid:#173682;--ink:#E9EEFB;--soft:#B8C6EA;--dim:#8193BF;
@@ -16,7 +16,7 @@ h1,h2,h3,.k,.num,.brand{font-family:"Space Grotesk",Inter,system-ui,sans-serif}
 header.top{position:sticky;top:0;z-index:5;background:rgba(2,11,43,.72);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
 header.top .in{max-width:1120px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;gap:18px}
 .brand{white-space:nowrap;font-weight:700;letter-spacing:.12em;font-size:14px;color:#fff;text-decoration:none;display:flex;align-items:center;gap:10px}
-.brand i{width:10px;height:10px;border-radius:50%;background:var(--lblue);box-shadow:0 0 12px var(--lblue),0 0 24px var(--bar)}
+.brand svg{height:26px;width:auto}.brand svg path{fill:#fff}.brand span{padding-left:12px;border-left:1px solid var(--line)}
 header.top nav{margin-left:auto;display:flex;gap:6px;font-size:15px}
 header.top nav a{text-decoration:none;color:var(--soft);padding:6px 12px;border-radius:999px}
 header.top nav a:hover,header.top nav a.on{color:#fff;background:rgba(124,154,222,.14)}
@@ -60,17 +60,27 @@ iframe{width:100%;aspect-ratio:16/9;border:1px solid var(--line);border-radius:1
 .maps img{max-width:100%;height:320px;object-fit:contain}
 .maps figcaption{font-size:14px;color:var(--soft);margin-top:6px}
 footer{padding:30px 0 44px;color:var(--dim);font-size:14px}
-@media (max-width:700px){.brand{font-size:12px;letter-spacing:.06em}header.top .in{gap:8px;padding:10px 14px}h1{font-size:42px}.hero .wrap{padding-top:60px;padding-bottom:56px}header.top nav{gap:0}header.top nav a{padding:5px 7px;font-size:13px}.brand i{display:none}.hide-s{display:none}table{font-size:13px}}
+@media (max-width:700px){.brand span{display:none}.brand svg{height:22px}header.top .in{gap:8px;padding:10px 14px}h1{font-size:42px}.hero .wrap{padding-top:60px;padding-bottom:56px}header.top nav{gap:0}header.top nav a{padding:5px 7px;font-size:13px}.hide-s{display:none}table{font-size:13px}}
 @media (prefers-reduced-motion:reduce){.hero canvas{display:none}.card,.cta a{transition:none}}
 </style></head>
-<body><header class="top"><div class="in"><a class="brand" href="index.html"><i></i>STUDENT AI LAB 2026</a><nav><a href="index.html" class=on>Challenge</a><a href="pitch.html">Presentation</a><a href="data.html">Data</a></nav></div></header>
+<body><header class="top"><div class="in"><a class="brand" href="index.html"><svg aria-hidden="true" role="img" aria-label="Foyer Group" width="117" height="40" viewBox="0 0 117 40" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="none" overflow="hidden">
+<defs><clipPath id="clip0_492_1922"><rect x="0" y="0" width="117" height="40" fill="#FFFFFF"/></clipPath></defs><g clip-path="url(#clip0_492_1922)"><path d="M111.468 15.626C112.262 14.6853 113.969 13.7283 115.995 13.7159L116 13.7159C116.383 13.7105 116.701 13.7357 117 13.7708 116.827 14.3217 115.971 17.0519 115.802 17.5919 115.378 17.4077 114.922 17.3192 114.396 17.3192 112.669 17.3192 110.923 18.6137 110.923 21.0964L110.923 32.1276 106.925 32.1276 106.925 14.0277 110.923 14.0277 110.923 16.2767 111.468 15.626ZM104.297 24.1807 92.5557 24.1807 92.5557 24.4909C92.5557 27.2247 94.2864 28.99 96.9715 28.99 99.0338 28.99 100.103 28.4109 101.221 27.3417 101.554 27.6723 103.263 29.3393 103.622 29.6906 101.888 31.3684 100.182 32.3418 96.9355 32.3418 91.3826 32.3418 88.5685 29.2079 88.5685 23.0137 88.5685 17.278 91.5821 13.7157 96.431 13.7157 101.208 13.7157 104.297 17.1243 104.297 22.3951L104.297 24.1807ZM92.5414 21.5883 100.321 21.5883 100.306 21.2637C100.271 20.3946 100.157 19.858 99.8546 19.1347 99.2398 17.7696 97.9933 16.9963 96.431 16.9963 94.8688 16.9963 93.6238 17.7735 93.0168 19.1288 92.7099 19.858 92.5946 20.3926 92.5557 21.2637L92.5414 21.5883ZM88.3872 14.028C88.0901 14.8299 80.5123 35.3607 80.5108 35.3681 80.0999 36.4491 79.6881 37.1546 79.1796 37.6645 78.2628 38.5786 77.0158 39.0168 75.3634 38.9995L73.8371 38.9995 73.8371 35.4264 74.6061 35.4264C76.1093 35.4264 76.7493 34.9669 77.2415 33.5291L78.0691 31.122C78.0691 31.122 72.0674 14.8225 71.7743 14.028L75.8073 14.028C75.9531 14.4179 80.1586 26.0217 80.1586 26.0217 80.1586 26.0217 84.1936 14.4287 84.3359 14.028L88.3872 14.028ZM69.1017 15.9274C70.8073 17.7144 71.1399 19.8809 71.1399 23.0139 71.1399 26.6898 70.6083 28.5539 69.1017 30.13 68.3272 30.9571 66.5644 32.342 63.4921 32.342 60.6065 32.342 58.8689 31.1404 57.918 30.13 56.4134 28.5539 55.8783 26.6898 55.8783 23.0139 55.8783 19.3592 56.4134 17.5025 57.918 15.9308 58.8689 14.9185 60.605 13.7159 63.4921 13.7159 66.5679 13.7159 68.3272 15.1023 69.1017 15.9274ZM65.9106 27.8192C66.9906 26.7308 67.0798 24.9254 67.0798 23.0139 67.0798 21.1196 66.9906 19.3256 65.9106 18.2386 65.2992 17.6294 64.4853 17.3192 63.4921 17.3192 62.5058 17.3192 61.7313 17.622 61.1145 18.2386 60.0291 19.3256 59.9404 21.1196 59.9404 23.0139 59.9404 24.9254 60.0291 26.7308 61.1145 27.8192 61.7313 28.4378 62.5097 28.7387 63.4921 28.7387 64.4853 28.7387 65.2973 28.4314 65.9106 27.8192ZM56.6461 7 56.6461 10.8918 47.3868 10.8918 47.3868 17.6685 53.5294 17.6685 53.5294 21.5579 47.3868 21.5579 47.3868 32.1276 43 32.1276 43 7 56.6461 7Z" class="MsftOfcThm_Accent2_Fill_v2" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" fill="#20439D" fill-rule="evenodd" fill-opacity="1" clip-rule="evenodd"/><path d="M6.6018 22.2859 31.7405 22.2859C31.8847 21.3816 32 20.4481 32 19.5146 32 18.5519 31.8847 17.6476 31.7405 16.7433L9.77297 16.7433 6.6018 22.2859Z" class="MsftOfcThm_Accent2_Fill_v2" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" fill="#20439D" fill-opacity="1"/><path d="M2.91171 28.7911C3.74775 29.9872 4.6991 31.0665 5.7946 32L26.1766 32C27.9928 30.4831 29.4631 28.5869 30.4721 26.4282L4.23783 26.4282 2.91171 28.7911Z" class="MsftOfcThm_Accent2_Fill_v2" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" fill="#20439D" fill-opacity="1"/><path d="M30.4721 12.5718C29.4631 10.4131 27.9928 8.51692 26.2054 7L5.82342 7C2.27747 9.9755 0 14.4679 0 19.4854 0 21.1482 0.259459 22.7526 0.720721 24.2696L7.35135 12.5718 30.4721 12.5718Z" class="MsftOfcThm_Accent2_Fill_v2" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" fill="#20439D" fill-opacity="1"/></g></svg><span>My Risk Compass</span></a><nav><a href="index.html" class=on>Challenge</a><a href="pitch.html">Presentation</a><a href="data.html">Data</a></nav></div></header>
 <div class="hero"><canvas id="net"></canvas><div class="wrap">
-<div class="k">Foyer Group × University of Luxembourg · Student AI Lab 2026</div>
+<div class="k">A challenge by Foyer · Student AI Lab 2026, University of Luxembourg</div>
 <h1>My Risk Compass</h1>
-<p class="sub">Prevent and better protect through data. From an address, a route, a profile or anything you imagine, help anyone see what threatens their home, their car and their daily life, why, and what to do.</p>
+<p class="sub">Prevent and better protect through data. Build what helps anyone see what threatens their home, their car and their daily life, why, and what to do: from an address, a route, a profile, or anything you imagine.</p>
 <div class="cta"><a class="p" href="pitch.html">▶ Watch the presentation</a><a class="s" href="data.html">Explore the data</a></div>
 </div></div>
 <main class="wrap">
+<section><h2>Why you'll love it</h2>
+<div class="grid g5">
+<div class="card"><div class="num">01</div><h3>A real problem</h3><p>Floods, roads, homes: what you build can protect real people.</p></div>
+<div class="card"><div class="num">02</div><h3>Rich, real data</h3><p>Maps, terrain, weather, roads, some of it live, and fictitious insurer data down to a 500 m grid.</p></div>
+<div class="card"><div class="num">03</div><h3>Free to imagine</h3><p>Your idea, your form. AI helps you build it.</p></div>
+<div class="card"><div class="num">04</div><h3>Insurance from the inside</h3><p>See how risks, covers and claims really work, with Foyer experts at your side.</p></div>
+<div class="card"><div class="num">05</div><h3>A project to show</h3><p>Something concrete for your portfolio and your CV.</p></div>
+</div>
+</section>
 <section><h2>Imagine everyone able to</h2>
 <div class="grid g5">
 <div class="card"><div class="num">01</div><h3>See the risks</h3><p>On a map: my address, my road, my zones.</p></div>
@@ -96,14 +106,7 @@ footer{padding:30px 0 44px;color:var(--dim);font-size:14px}
 <div class="card"><h3>Mozaïk general conditions</h3><p>Foyer's modular home insurance: a base, plus options to compose. To match covers to risks. <a href="docs/mozaik_conditions_generales_2026.pdf">PDF</a>.</p></div>
 <div class="card"><h3>Foyer experts</h3><p>The AI and Data Science team, claims and operations experts.</p></div>
 </div>
-</section>
-<section><h2>What makes it rich</h2>
-<div class="grid">
-<div class="card"><h3>Data</h3><p>Find, understand and cross very different sources.</p></div>
-<div class="card"><h3>AI</h3><p>Surface what matters, contextualise it, personalise it.</p></div>
-<div class="card"><h3>Product</h3><p>Turn complex data into a simple, truly useful experience.</p></div>
-<div class="card"><h3>Insurance</h3><p>From repairing to preventing: understand how insurance really works.</p></div>
-</div>
+<div class="band">Other data in mind? <span>Tell us: we will try to find it.</span></div>
 </section>
 <section><h2>Rules of the game</h2>
 <div class="grid">
@@ -112,10 +115,10 @@ footer{padding:30px 0 44px;color:var(--dim);font-size:14px}
 <div class="card"><h3>Open tools</h3><p>Open-source or free-tier tools; respect each dataset's licence.</p></div>
 <div class="card"><h3>Fair</h3><p>No discrimination on sensitive attributes. Advice is guidance, not certified expertise.</p></div>
 </div>
-<div class="band">How we will look at it: <span>breadth of risks · crossing sources · showing why, never a black box · concrete actions · simple to use · responsible AI</span></div>
+<div class="band">How we will look at it: <span>breadth of risks · crossing sources · never a black box · concrete actions · simple · responsible AI</span></div>
 </section>
 </main>
-<footer><div class="wrap">Foyer Group × University of Luxembourg · Student AI Lab 2026 · My Risk Compass. Demo values and Foyer data on this site are fictitious.</div></footer>
+<footer><div class="wrap">My Risk Compass, a challenge by Foyer for the Student AI Lab 2026 of the University of Luxembourg. Demo values and Foyer data on this site are fictitious.</div></footer>
 <script>(function(){var c=document.getElementById('net');if(!c||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
 var x=c.getContext('2d'),P=[],W,H,d=Math.min(devicePixelRatio||1,2);
 function size(){W=c.clientWidth;H=c.clientHeight;c.width=W*d;c.height=H*d;x.setTransform(d,0,0,d,0,0);P=[];

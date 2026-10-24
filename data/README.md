@@ -17,12 +17,6 @@ chose, relative claim indicators, vehicles, and commutes between cantons.
    up to date. To cross the two, use the coordinates (grid cells, road segments), the commune or the
    canton.
 
-Regenerate or check the files (Python 3 with numpy, pandas and shapely; seeded, always the same result):
-
-```
-python generer.py             # writes the CSV files and two heatmap previews
-python generer.py --verifier  # checks the keys, that the files add up, and that nothing is individual
-```
 
 ## The files
 
