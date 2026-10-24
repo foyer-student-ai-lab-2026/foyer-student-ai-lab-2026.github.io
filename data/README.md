@@ -84,7 +84,7 @@ glance. Cells add up to communes, communes add up to cantons.
 | `share_of_homes_with_option` | share of insured homes that chose this option |
 
 Mozaïk is Foyer's modular home insurance: a base of covers, and options each person composes. What
-each option covers is in the Mozaïk general conditions, in your pack.
+each option covers is in the Mozaïk general conditions.
 
 ### vehicles_by_canton.csv
 | Column | Meaning |
