@@ -3,7 +3,8 @@
 What an insurer knows internally, **invented** and **aggregated at the same grain as the public
 data**: a smoothed 500 m grid (a heatmap you can put under any address), the communes, the cantons,
 and the main roads cut into 1 km segments. Homes and their equipment, the Mozaïk options people
-chose, relative claim indicators, vehicles, and commutes between cantons.
+chose, relative claim indicators, vehicles, commutes between cantons, and the life moments behind new
+home contracts (who subscribes, through which channel, in which language).
 
 1. **Everything is fictitious.** The places are real (the commune boundaries are the official ones),
    the numbers are not. They are shaped loosely by real geography, so they look plausible: do not
@@ -30,6 +31,7 @@ chose, relative claim indicators, vehicles, and commutes between cantons.
 | `mozaik_options_by_canton.csv` | 96 | one Mozaïk option in one canton |
 | `vehicles_by_canton.csv` | 12 | the insured vehicles of a canton |
 | `commutes_between_cantons.csv` | about 140 | the commuters going from one canton to another |
+| `new_homes_by_life_moment.csv` | 60 | the new home contracts of a year in one canton, for one life moment |
 
 `heatmap_water_damage_index.png` and `heatmap_burglary_index.png` show two of the grid fields at a
 glance. Cells add up to communes, communes add up to cantons.
@@ -104,10 +106,28 @@ each option covers is in the Mozaïk general conditions.
 | `share_leaving_before_7am` | share who leave before 7:00 |
 | `share_km_on_forest_roads` | share of the distance driven along forests |
 
+### new_homes_by_life_moment.csv
+To step into someone's shoes: the people behind a subscription, by the moment of life that brought
+them. Where a canton counts fewer than 30 new contracts for a moment, only the count is shown.
+
+| Column | Meaning |
+|---|---|
+| `canton`, `life_moment` | the canton; buying_a_home, first_home_alone, arrived_in_luxembourg, moving_within_luxembourg, new_family |
+| `new_home_contracts` | new home insurance contracts over a year, rounded to 10 |
+| `share_flats`, `share_tenants` | share of flats; share of tenants |
+| `median_age_band` | the median age band of the people subscribing |
+| `share_subscribed_online`, `share_subscribed_with_agent`, `share_subscribed_with_bank_partner` | the channel that concluded the contract (they add up to 1) |
+| `share_online_journeys_abandoned` | among the online journeys started, the share left before the end |
+| `median_days_moving_in_to_subscription` | median days between moving in and the contract |
+| `share_with_theft_option`, `share_with_natural_catastrophes_option` | two Mozaïk options, chosen at subscription |
+| `share_journey_language_fr`, `_de`, `_en`, `_lb`, `_pt` | the language the journey was done in (they add up to 1) |
+
 ## The public data, real, to take from the source
 
 Every address in the country is geocoded and public (ACT). Around it: flood and flash-flood maps,
 past flood events and water levels (AGE); terrain and LiDAR (ACT); land cover (LIS-L); weather warnings
 and records (MeteoLux); weather stations (ASTA); fire and rescue centres (CGDIS); SEVESO sites; traffic
-counts and roadworks; road accidents by canton (STATEC); OpenStreetMap; Copernicus. Most are on
+counts and roadworks; road accidents by canton (STATEC); OpenStreetMap; Copernicus. For the life moments:
+population by nationality and age by commune (RNPP), migrations and the 2021 census (STATEC), sale
+prices and rents by commune (Observatoire de l'Habitat). Most are on
 [data.public.lu](https://data.public.lu); check each dataset's licence on its page.
