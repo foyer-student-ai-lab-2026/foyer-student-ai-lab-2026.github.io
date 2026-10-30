@@ -124,7 +124,8 @@ them. Where a canton counts fewer than 30 new contracts for a moment, only the c
 
 ## The public data, real, to take from the source
 
-Every address in the country is geocoded and public (ACT). Around it: flood and flash-flood maps,
+Every address in the country is geocoded and public (ACT), and so is the cadastral parcel it sits
+on (PCN): cross the zones with the whole plot, not only the address point. Around it: flood and flash-flood maps,
 past flood events and water levels (AGE); terrain and LiDAR (ACT); land cover (LIS-L); weather warnings
 and records (MeteoLux); weather stations (ASTA); fire and rescue centres (CGDIS); SEVESO sites; traffic
 counts and roadworks; road accidents by canton (STATEC); OpenStreetMap; Copernicus. For the life moments:

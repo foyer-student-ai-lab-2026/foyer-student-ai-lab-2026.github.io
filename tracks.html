@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Five tracks, My Risk Compass, a Foyer challenge</title><meta name="theme-color" content="#020B2B"><link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png"><link rel="apple-touch-icon" href="apple-touch-icon.png">
+<title>Three tracks, My Risk Compass, a Foyer challenge</title><meta name="theme-color" content="#020B2B"><link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png"><link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
 <style>:root{--navy:#041D58;--deep:#020B2B;--blue:#20439D;--bar:#2857C8;--lblue:#7C9ADE;--mid:#173682;--ink:#E9EEFB;--soft:#B8C6EA;--dim:#8193BF;
@@ -60,7 +60,7 @@ iframe{width:100%;aspect-ratio:16/9;border:1px solid var(--line);border-radius:1
 .maps img{max-width:100%;height:320px;object-fit:contain}
 .maps figcaption{font-size:14px;color:var(--soft);margin-top:6px}
 footer{padding:30px 0 44px;color:var(--dim);font-size:14px}
-@media (max-width:700px){.brand span{display:none}.brand svg{height:22px}header.top .in{gap:8px;padding:10px 14px}h1{font-size:42px}.hero .wrap{padding-top:60px;padding-bottom:56px}header.top nav{gap:0}header.top nav a{padding:5px 7px;font-size:13px}.hide-s{display:none}table{font-size:13px}}
+@media (max-width:700px){.brand span{display:none}.brand svg{height:22px}header.top .in{gap:8px;padding:10px 14px}h1{font-size:42px}.hero .wrap{padding-top:60px;padding-bottom:56px}header.top nav{gap:0;min-width:0;overflow-x:auto;scrollbar-width:none}header.top nav a{padding:5px 7px;font-size:13px;white-space:nowrap}.hide-s{display:none}table{font-size:13px}}
 @media (prefers-reduced-motion:reduce){.hero canvas{display:none}.card,.cta a{transition:none}}
 
 code{font:13px/1.4 ui-monospace,"SF Mono",Menlo,Consolas,monospace;background:rgba(124,154,222,.13);color:#fff;border-radius:6px;padding:1px 6px;overflow-wrap:anywhere}
@@ -88,225 +88,28 @@ ol.read li b{color:#fff}
 ol.steps{padding-left:22px;max-width:860px}ol.steps li{margin:5px 0;color:var(--soft)}
 .card ol,.card ul{padding-left:20px}.card li{color:var(--soft);font-size:15px;margin:3px 0}
 @media (max-width:700px){.persona{grid-template-columns:1fr}}
+
+.back{margin:18px 0 0;font-size:15px}.back a{color:var(--or);text-decoration:none}.back a:hover{text-decoration:underline}
+.card h3 a{color:inherit;text-decoration:none}.card h3 a:hover{text-decoration:underline}
+.open{margin-top:10px}.open a{font-weight:600;color:var(--or);text-decoration:none}
 </style></head>
 <body><header class="top"><div class="in"><a class="brand" href="index.html"><svg aria-hidden="true" role="img" aria-label="Foyer Group" width="117" height="40" viewBox="0 0 117 40" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="none" overflow="hidden">
-<defs><clipPath id="clip0_492_1922"><rect x="0" y="0" width="117" height="40" fill="#FFFFFF"/></clipPath></defs><g clip-path="url(#clip0_492_1922)"><path d="M111.468 15.626C112.262 14.6853 113.969 13.7283 115.995 13.7159L116 13.7159C116.383 13.7105 116.701 13.7357 117 13.7708 116.827 14.3217 115.971 17.0519 115.802 17.5919 115.378 17.4077 114.922 17.3192 114.396 17.3192 112.669 17.3192 110.923 18.6137 110.923 21.0964L110.923 32.1276 106.925 32.1276 106.925 14.0277 110.923 14.0277 110.923 16.2767 111.468 15.626ZM104.297 24.1807 92.5557 24.1807 92.5557 24.4909C92.5557 27.2247 94.2864 28.99 96.9715 28.99 99.0338 28.99 100.103 28.4109 101.221 27.3417 101.554 27.6723 103.263 29.3393 103.622 29.6906 101.888 31.3684 100.182 32.3418 96.9355 32.3418 91.3826 32.3418 88.5685 29.2079 88.5685 23.0137 88.5685 17.278 91.5821 13.7157 96.431 13.7157 101.208 13.7157 104.297 17.1243 104.297 22.3951L104.297 24.1807ZM92.5414 21.5883 100.321 21.5883 100.306 21.2637C100.271 20.3946 100.157 19.858 99.8546 19.1347 99.2398 17.7696 97.9933 16.9963 96.431 16.9963 94.8688 16.9963 93.6238 17.7735 93.0168 19.1288 92.7099 19.858 92.5946 20.3926 92.5557 21.2637L92.5414 21.5883ZM88.3872 14.028C88.0901 14.8299 80.5123 35.3607 80.5108 35.3681 80.0999 36.4491 79.6881 37.1546 79.1796 37.6645 78.2628 38.5786 77.0158 39.0168 75.3634 38.9995L73.8371 38.9995 73.8371 35.4264 74.6061 35.4264C76.1093 35.4264 76.7493 34.9669 77.2415 33.5291L78.0691 31.122C78.0691 31.122 72.0674 14.8225 71.7743 14.028L75.8073 14.028C75.9531 14.4179 80.1586 26.0217 80.1586 26.0217 80.1586 26.0217 84.1936 14.4287 84.3359 14.028L88.3872 14.028ZM69.1017 15.9274C70.8073 17.7144 71.1399 19.8809 71.1399 23.0139 71.1399 26.6898 70.6083 28.5539 69.1017 30.13 68.3272 30.9571 66.5644 32.342 63.4921 32.342 60.6065 32.342 58.8689 31.1404 57.918 30.13 56.4134 28.5539 55.8783 26.6898 55.8783 23.0139 55.8783 19.3592 56.4134 17.5025 57.918 15.9308 58.8689 14.9185 60.605 13.7159 63.4921 13.7159 66.5679 13.7159 68.3272 15.1023 69.1017 15.9274ZM65.9106 27.8192C66.9906 26.7308 67.0798 24.9254 67.0798 23.0139 67.0798 21.1196 66.9906 19.3256 65.9106 18.2386 65.2992 17.6294 64.4853 17.3192 63.4921 17.3192 62.5058 17.3192 61.7313 17.622 61.1145 18.2386 60.0291 19.3256 59.9404 21.1196 59.9404 23.0139 59.9404 24.9254 60.0291 26.7308 61.1145 27.8192 61.7313 28.4378 62.5097 28.7387 63.4921 28.7387 64.4853 28.7387 65.2973 28.4314 65.9106 27.8192ZM56.6461 7 56.6461 10.8918 47.3868 10.8918 47.3868 17.6685 53.5294 17.6685 53.5294 21.5579 47.3868 21.5579 47.3868 32.1276 43 32.1276 43 7 56.6461 7Z" class="MsftOfcThm_Accent2_Fill_v2" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" fill="#20439D" fill-rule="evenodd" fill-opacity="1" clip-rule="evenodd"/><path d="M6.6018 22.2859 31.7405 22.2859C31.8847 21.3816 32 20.4481 32 19.5146 32 18.5519 31.8847 17.6476 31.7405 16.7433L9.77297 16.7433 6.6018 22.2859Z" class="MsftOfcThm_Accent2_Fill_v2" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" fill="#20439D" fill-opacity="1"/><path d="M2.91171 28.7911C3.74775 29.9872 4.6991 31.0665 5.7946 32L26.1766 32C27.9928 30.4831 29.4631 28.5869 30.4721 26.4282L4.23783 26.4282 2.91171 28.7911Z" class="MsftOfcThm_Accent2_Fill_v2" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" fill="#20439D" fill-opacity="1"/><path d="M30.4721 12.5718C29.4631 10.4131 27.9928 8.51692 26.2054 7L5.82342 7C2.27747 9.9755 0 14.4679 0 19.4854 0 21.1482 0.259459 22.7526 0.720721 24.2696L7.35135 12.5718 30.4721 12.5718Z" class="MsftOfcThm_Accent2_Fill_v2" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" fill="#20439D" fill-opacity="1"/></g></svg><span>My Risk Compass</span></a><nav><a href="index.html">Challenge</a><a href="pitch.html">Presentation</a><a href="tracks.html" class=on>Tracks</a><a href="data.html">Data</a></nav></div></header>
+<defs><clipPath id="clip0_492_1922"><rect x="0" y="0" width="117" height="40" fill="#FFFFFF"/></clipPath></defs><g clip-path="url(#clip0_492_1922)"><path d="M111.468 15.626C112.262 14.6853 113.969 13.7283 115.995 13.7159L116 13.7159C116.383 13.7105 116.701 13.7357 117 13.7708 116.827 14.3217 115.971 17.0519 115.802 17.5919 115.378 17.4077 114.922 17.3192 114.396 17.3192 112.669 17.3192 110.923 18.6137 110.923 21.0964L110.923 32.1276 106.925 32.1276 106.925 14.0277 110.923 14.0277 110.923 16.2767 111.468 15.626ZM104.297 24.1807 92.5557 24.1807 92.5557 24.4909C92.5557 27.2247 94.2864 28.99 96.9715 28.99 99.0338 28.99 100.103 28.4109 101.221 27.3417 101.554 27.6723 103.263 29.3393 103.622 29.6906 101.888 31.3684 100.182 32.3418 96.9355 32.3418 91.3826 32.3418 88.5685 29.2079 88.5685 23.0137 88.5685 17.278 91.5821 13.7157 96.431 13.7157 101.208 13.7157 104.297 17.1243 104.297 22.3951L104.297 24.1807ZM92.5414 21.5883 100.321 21.5883 100.306 21.2637C100.271 20.3946 100.157 19.858 99.8546 19.1347 99.2398 17.7696 97.9933 16.9963 96.431 16.9963 94.8688 16.9963 93.6238 17.7735 93.0168 19.1288 92.7099 19.858 92.5946 20.3926 92.5557 21.2637L92.5414 21.5883ZM88.3872 14.028C88.0901 14.8299 80.5123 35.3607 80.5108 35.3681 80.0999 36.4491 79.6881 37.1546 79.1796 37.6645 78.2628 38.5786 77.0158 39.0168 75.3634 38.9995L73.8371 38.9995 73.8371 35.4264 74.6061 35.4264C76.1093 35.4264 76.7493 34.9669 77.2415 33.5291L78.0691 31.122C78.0691 31.122 72.0674 14.8225 71.7743 14.028L75.8073 14.028C75.9531 14.4179 80.1586 26.0217 80.1586 26.0217 80.1586 26.0217 84.1936 14.4287 84.3359 14.028L88.3872 14.028ZM69.1017 15.9274C70.8073 17.7144 71.1399 19.8809 71.1399 23.0139 71.1399 26.6898 70.6083 28.5539 69.1017 30.13 68.3272 30.9571 66.5644 32.342 63.4921 32.342 60.6065 32.342 58.8689 31.1404 57.918 30.13 56.4134 28.5539 55.8783 26.6898 55.8783 23.0139 55.8783 19.3592 56.4134 17.5025 57.918 15.9308 58.8689 14.9185 60.605 13.7159 63.4921 13.7159 66.5679 13.7159 68.3272 15.1023 69.1017 15.9274ZM65.9106 27.8192C66.9906 26.7308 67.0798 24.9254 67.0798 23.0139 67.0798 21.1196 66.9906 19.3256 65.9106 18.2386 65.2992 17.6294 64.4853 17.3192 63.4921 17.3192 62.5058 17.3192 61.7313 17.622 61.1145 18.2386 60.0291 19.3256 59.9404 21.1196 59.9404 23.0139 59.9404 24.9254 60.0291 26.7308 61.1145 27.8192 61.7313 28.4378 62.5097 28.7387 63.4921 28.7387 64.4853 28.7387 65.2973 28.4314 65.9106 27.8192ZM56.6461 7 56.6461 10.8918 47.3868 10.8918 47.3868 17.6685 53.5294 17.6685 53.5294 21.5579 47.3868 21.5579 47.3868 32.1276 43 32.1276 43 7 56.6461 7Z" class="MsftOfcThm_Accent2_Fill_v2" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" fill="#20439D" fill-rule="evenodd" fill-opacity="1" clip-rule="evenodd"/><path d="M6.6018 22.2859 31.7405 22.2859C31.8847 21.3816 32 20.4481 32 19.5146 32 18.5519 31.8847 17.6476 31.7405 16.7433L9.77297 16.7433 6.6018 22.2859Z" class="MsftOfcThm_Accent2_Fill_v2" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" fill="#20439D" fill-opacity="1"/><path d="M2.91171 28.7911C3.74775 29.9872 4.6991 31.0665 5.7946 32L26.1766 32C27.9928 30.4831 29.4631 28.5869 30.4721 26.4282L4.23783 26.4282 2.91171 28.7911Z" class="MsftOfcThm_Accent2_Fill_v2" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" fill="#20439D" fill-opacity="1"/><path d="M30.4721 12.5718C29.4631 10.4131 27.9928 8.51692 26.2054 7L5.82342 7C2.27747 9.9755 0 14.4679 0 19.4854 0 21.1482 0.259459 22.7526 0.720721 24.2696L7.35135 12.5718 30.4721 12.5718Z" class="MsftOfcThm_Accent2_Fill_v2" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" fill="#20439D" fill-opacity="1"/></g></svg><span>My Risk Compass</span></a><nav><a href="index.html">Challenge</a><a href="pitch.html">Presentation</a><a href="tracks.html" class=on>Tracks</a><a href="explorer.html">Address explorer</a><a href="data.html">Data</a></nav></div></header>
 
 <div class="hero"><canvas id="net"></canvas><div class="wrap">
-<div class="k">My Risk Compass · Five tracks</div>
-<h1>Five tracks to start</h1>
-<p class="sub">After the discovery session, here are five concrete tracks, each with a real-life role to follow step by step, the data you can use, and a first step for the week. They are ideas to discuss with you: pick one, combine two, or bring your own.</p>
+<div class="k">My Risk Compass · Three tracks</div>
+<h1>Three tracks to start</h1>
+<p class="sub">After the discovery session, three concrete tracks, each with a real-life role to follow step by step, a few variants, the data you can use and a first step for the week. They are ideas to discuss with you: pick one, combine them, or bring your own.</p>
 </div></div>
-<main class="wrap">
-
-<section><h2>Common ground, for every track</h2>
-<p class="lead">Start from a real problem: the process, and the data you need, follow from it. Work in parallel: part of the group hunts for every open dataset that could help, part of it digs into the real case. Find the data first, then stay concrete: one person, one address, one company, one decision.</p>
-
-<div class="th">The five tracks at a glance</div>
+<main class="wrap"><section><div class="th">The three tracks at a glance</div>
 <div class="grid">
-<div class="card"><div class="num">01</div><h3>The newcomer</h3><p>Just arrived in Luxembourg: which commune, which home, what to insure, in their own language.</p></div>
-<div class="card"><div class="num">02</div><h3>The flat buyer</h3><p>The building, its risks, the loan and its insurance, the home insurance: before signing.</p></div>
-<div class="card"><div class="num">03</div><h3>Home insurance subscription</h3><p>The future client gives an address and sees the risks of the place and the Mozaïk options that fit, with why.</p></div>
-<div class="card"><div class="num">04</div><h3>Pricing, on fictitious data</h3><p>A premium that follows the risk of the address and the home, explained line by line.</p></div>
-<div class="card"><div class="num">05</div><h3>A company and its subscription</h3><p>Every site, each building against the flood zones, the filed accounts, what the underwriter asks.</p></div>
+<div class="card"><div class="num">A</div><h3><a href="track-a.html">An address, before you decide</a></h3><p>Individuals. A newcomer chooses where to live, then buys a flat: the risks of each address, what to insure, in their own language.</p><p class="open"><a href="track-a.html">Open the track →</a></p></div>
+<div class="card"><div class="num">B</div><h3><a href="track-b.html">Insure the right risk, at the right price</a></h3><p>Home insurance. The future client subscribes from an address, sees the Mozaïk options that fit and a premium explained on fictitious data, then gets the right advice when a storm comes.</p><p class="open"><a href="track-b.html">Open the track →</a></p></div>
+<div class="card"><div class="num">C</div><h3><a href="track-c.html">A company and all its sites</a></h3><p>Companies. Subscription and prevention: every site, each building against the flood zones, the filed accounts, the visit to prepare.</p><p class="open"><a href="track-c.html">Open the track →</a></p></div>
+<div class="card"><div class="num">+</div><h3>Your own idea</h3><p>Another person, another risk, another moment: bring it, we will help you frame it.</p></div>
 </div>
 
-<div class="th">Who is involved</div>
-<div class="grid">
-<div class="card"><h3>The people you help</h3><p>A newcomer, a family buying a flat, someone subscribing home insurance online, the manager of a company with several sites.</p></div>
-<div class="card"><h3>Foyer, the organising team</h3><p>The AI and Data Science team: your questions, the fictitious Foyer data, and the link to the right expert.</p></div>
-<div class="card"><h3>Foyer experts</h3><p>Prevention for companies (large, medium and small: identify risks, help reduce them); home insurance, subscription and pricing; the team for individual customers.</p></div>
-<div class="card"><h3>The public data producers</h3><p>The land registry (ACT), the water management agency (AGE), STATEC, MeteoLux, the rescue services (CGDIS), the business register's open data, OpenStreetMap contributors. Their data, their licences.</p></div>
-</div>
-
-<div class="th">The problems underneath</div>
-<div class="grid">
-<div class="card"><div class="num">01</div><h3>The information exists, in pieces</h3><p>Flood maps, buildings, weather, prices: each source holds one piece, on its own site, in its own format.</p></div>
-<div class="card"><div class="num">02</div><h3>A plot is not a building</h3><p>A parcel can touch a flood zone while the building stands outside it, and the other way round. Precision changes the answer.</p></div>
-<div class="card"><div class="num">03</div><h3>People choose without knowing</h3><p>Where to live, which options to take, which site to protect first: the decision is made before the risk is understood.</p></div>
-<div class="card"><div class="num">04</div><h3>Prevention comes late</h3><p>Advice usually arrives after the damage. Data can bring it before, with a clear reason and a simple action.</p></div>
-</div>
-
-<div class="th">What not to do</div>
-<div class="grid">
-<div class="card"><h3>Respect every licence</h3><p>Read the licence on each dataset's page and cite the source. CC0 is free; CC BY needs the attribution; OpenStreetMap is ODbL: write "© OpenStreetMap contributors".</p></div>
-<div class="card"><h3>Respect robots.txt and terms</h3><p>Do not scrape a site whose robots.txt or terms forbid it (the trade register's website is one), nor search engine results. Prefer the bulk download or the official API. In doubt, ask us first.</p></div>
-<div class="card"><h3>No personal data</h3><p>Public data and the fictitious Foyer data only. Do not collect people's names, company directors or contact persons, and never try to re-identify anyone.</p></div>
-<div class="card"><h3>No client address to an outside service</h3><p>When a report is made for a client, the address never leaves: no online geocoder or map service called with it. Download the whole layer, geocode on BD-Adresses, intersect locally. Query a commune or the whole country, never around a person.</p></div>
-</div>
-
-<div class="th">How to ask a question</div>
-<ol class="steps">
-<li>Write to the organising team by email, one question per mail, with your track in the subject.</li>
-<li>Say what you tried, with the link to the data or the code, and what you need: a dataset, an expert, a check.</li>
-<li>Asking for fictitious Foyer data? Give the grain (500 m grid, commune, canton, road segment), the period and the columns you would like.</li>
-<li>We find the expert who fits the question and come back to you. No question is too small.</li>
-</ol>
-
-<div class="th">Sharing your work</div>
-<p class="lead">We would love to learn from what you build and carry the best ideas further. A shape that makes it easy:</p>
-<ol class="steps">
-<li>A code repository under an open licence (MIT or Apache 2.0 for code, CC BY 4.0 for texts and data), that runs with one command from a fresh clone.</li>
-<li>A <code>README.md</code> in English: the problem and the person, the track, how to run it, one line per data source (name, link, licence, download date, what you take from it), what is fictitious, the limits, what is left to do.</li>
-<li>The scripts that download the open data (not the large raw files), the aggregated results they produce, and a dictionary of their columns.</li>
-<li>No personal data, no client address, no API key in the repository.</li>
-</ol>
-</section>
-
-<section class="pagebreak">
-<div class="angle">Track 1 · Individuals</div>
-<h2>The newcomer</h2>
-<p class="lead">Someone moves to Luxembourg for a job. Help them choose where to live, understand the risks of each place, and know what to insure, in their own language.</p>
-<div class="card"><h3>The role, step by step</h3><ol>
-<li>A 29-year-old engineer is hired in Luxembourg City and arrives in six weeks. She reads neither French nor German yet.</li>
-<li>She hesitates between a studio in Esch-sur-Alzette and a two-room flat in Bertrange: rent, commute, neighbourhood.</li>
-<li>The landlord asks for tenant home insurance. What is compulsory, what does liability cover?</li>
-<li>Her car arrives from abroad; her laptop and furniture are worth protecting.</li>
-<li>First winter: an orange weather warning, a damp cellar. Who to call?</li>
-</ol></div>
-<div class="th">Concrete questions</div>
-<ol class="steps">
-<li>For each address: flood zone, runoff after heavy rain, noise, nearest fire station.</li>
-<li>Rent and prices per commune; who lives there (communities, languages, ages).</li>
-<li>What must I insure when I arrive, what is useful, what can wait?</li>
-<li>What should I do when a warning comes?</li>
-</ol>
-<div class="th">Data</div>
-<table><thead><tr><th>Dataset</th><th>Licence</th><th>What it gives you</th></tr></thead><tbody>
-<tr><td><a href="https://data.public.lu/fr/datasets/adresses-georeferencees-bd-adresses/">BD-Adresses</a> (ACT)</td><td><span class="pill">CC0</span></td><td>Every address with coordinates: geocode locally.</td></tr>
-<tr><td><a href="https://data.public.lu/fr/datasets/loyers-annonces-des-logements-par-commune/">Advertised rents</a> per commune (Observatoire de l'Habitat)</td><td><span class="pill">check page</span></td><td>What renting costs here.</td></tr>
-<tr><td><a href="https://data.public.lu/fr/datasets/registre-national-des-personnes-physiques-rnpp-nombre-de-ressortissants-par-nationalite-et-par-commune-number-of-citizens-per-nationality-and-municipality/">Residents by nationality</a>, <a href="https://data.public.lu/fr/datasets/registre-national-des-personnes-physiques-rnpp-pyramide-dage-par-commune-population-age-pyramid-per-municipality/">age pyramid</a> (RNPP)</td><td><span class="pill">CC0</span></td><td>Communities and ages per commune.</td></tr>
-<tr><td><a href="https://data.public.lu/fr/datasets/population-et-emploi-mouvement-de-la-population-migrations/">Migrations</a> (STATEC)</td><td><span class="pill">check page</span></td><td>Who arrives each year, and where they settle.</td></tr>
-<tr><td>Flood maps <a href="https://data.public.lu/fr/datasets/flood-hazard-maps-10-year-flood/">HQ10</a>, <a href="https://data.public.lu/fr/datasets/flood-hazard-maps-100-year-flood/">HQ100</a>, <a href="https://data.public.lu/fr/datasets/flood-hazard-maps-extreme/">extreme</a>, <a href="https://data.public.lu/fr/datasets/flashflood-hazard-map/">flash floods</a> (AGE)</td><td><span class="pill">CC0</span></td><td>Flood and runoff zones per scenario.</td></tr>
-<tr><td><a href="https://data.public.lu/fr/datasets/emplacements-des-centres-dincendie-et-de-secours/">Fire and rescue centres</a> (CGDIS), <a href="https://data.public.lu/fr/datasets/meteolux-weather-warnings-for-the-grand-duchy-of-luxembourg-1/">MeteoLux warnings</a></td><td><span class="pill">CC0</span></td><td>Help nearby; live warnings in FR, DE and EN.</td></tr>
-<tr><td><a href="https://download.geofabrik.de/europe/luxembourg.html">OpenStreetMap</a> (country extract)</td><td><span class="pill">ODbL</span></td><td>Stops, schools, shops: draw your own map.</td></tr>
-</tbody></table>
-<div class="grid" style="margin-top:12px">
-<div class="card"><h3>Fictitious Foyer data, now</h3><p><a href="data.html">On the site</a>: new home contracts for the life moment "arrived in Luxembourg" (tenants, channel, language of the journey, days from moving in, journeys abandoned), the 500 m grid, the communes.</p></div>
-<div class="card"><h3>You can ask for</h3><p>Claims by peril and commune; vehicles. Fictitious, aggregated, at the grain of the open data.</p></div>
-</div>
-<div class="th">A first step, in one week</div>
-<ol class="steps"><li>Take two real addresses from BD-Adresses and compare them on one page: risks, rent, community, commute, each line with its source.</li><li>Write it in English and in one more language; add "what to insure when you arrive".</li></ol>
-<div class="band">A good result shows: <span>a person who understands in five minutes what they are choosing, in their language, with reasons rather than a score, and what the data does not know.</span></div>
-<p class="lead" style="margin-top:14px"><b>Going further.</b> The full report of an address, the way the French state's <a href="https://www.georisques.gouv.fr/">Géorisques</a> service does for any address in France; or, inside Foyer, a live alert when a MeteoLux warning or a <a href="https://data.public.lu/fr/datasets/niveau-deau/">rising river</a> touches the area. <b>Write to:</b> the organising team, who will bring in the team for individual customers.</p>
-</section>
-
-<section class="pagebreak">
-<div class="angle">Track 2 · Individuals</div>
-<h2>The flat buyer</h2>
-<p class="lead">A couple buys a flat. Help them understand the building and its risks, the insurance the loan requires, and the home insurance they need, before they sign.</p>
-<div class="card"><h3>The role, step by step</h3><ol>
-<li>A couple in their thirties visit a three-room flat on the first floor of a 1975 building in Ettelbruck, near the river, on a sunny day.</li>
-<li>The preliminary contract: the address, the building (its height, its age), the price compared with the commune.</li>
-<li>The loan: the bank asks for loan insurance and home insurance; they compare.</li>
-<li>The keys: they insure the flat and the cellar. Which options?</li>
-</ol></div>
-<div class="th">Concrete questions</div>
-<ol class="steps">
-<li>Is the building in a flood zone, for which scenario? Is the cellar exposed? Has the area been flooded before?</li>
-<li>What does a flat cost here (advertised prices, prices actually paid)?</li>
-<li>What to ask the seller and the building's manager? What does the building's insurance cover, and what is left to insure yourself?</li>
-</ol>
-<div class="th">Data</div>
-<table><thead><tr><th>Dataset</th><th>Licence</th><th>What it gives you</th></tr></thead><tbody>
-<tr><td><a href="https://data.public.lu/fr/datasets/base-de-donnees-nationale-des-batiments-3d-2023/">3D buildings 2023</a> (ACT)</td><td><span class="pill">CC0, check page</span></td><td>Footprint, ground level and height of each building.</td></tr>
-<tr><td>Flood maps (AGE) and <a href="https://data.public.lu/fr/datasets/6a7ade5b018c6a9e6da4c874/">past flood events</a></td><td><span class="pill">CC0</span></td><td>The building against each scenario; where floods already happened.</td></tr>
-<tr><td><a href="https://data.public.lu/fr/datasets/prix-annonces-des-logements-par-commune/">Advertised prices</a>, <a href="https://data.public.lu/fr/datasets/prix-de-vente-des-appartements-par-commune/">flat sale prices</a> per commune</td><td><span class="pill">check page</span></td><td>What a flat costs here.</td></tr>
-<tr><td><a href="https://data.public.lu/fr/datasets/lidar-2024-releve-3d-du-territoire-luxembourgeois/">LiDAR 2024</a> (ACT)</td><td><span class="pill">CC0</span></td><td>Terrain height, for the water depth at the door.</td></tr>
-<tr><td><a href="https://data.public.lu/en/datasets/seveso-iii-directive-seveso-installations/">Seveso installations</a>, <a href="https://data.public.lu/fr/datasets/environmental-noise-strategic-noise-maps/">noise maps</a></td><td><span class="pill">check page</span></td><td>Industrial neighbours, noise.</td></tr>
-</tbody></table>
-<div class="grid" style="margin-top:12px">
-<div class="card"><h3>Fictitious Foyer data, now</h3><p>The 500 m grid (water damage index, cellars), equipment per canton (flats, cellars, non-return valves), new contracts for the life moment "buying a home" (channel, bank partner, options).</p></div>
-<div class="card"><h3>You can ask for</h3><p>Water damage and flood claims by commune and year. Fictitious and aggregated.</p></div>
-</div>
-<div class="th">A first step, in one week</div>
-<ol class="steps"><li>Take ten real buildings near a river; put each footprint against the flood zones; add its height and the commune's prices.</li><li>Write a "before you sign" page per building, with the questions to ask the seller.</li></ol>
-<div class="band">A good result shows: <span>the building (not the plot) against the risk, the cellar on its own line, a reason and an action for each risk, and what each insurance covers, without any real price.</span></div>
-<p class="lead" style="margin-top:14px"><b>Going further.</b> Compare the water level of the flood map with the terrain and the building's ground level to estimate the depth at the door, and which floors it reaches. <b>Write to:</b> the organising team, who will bring in the home insurance experts.</p>
-</section>
-
-<section class="pagebreak">
-<div class="angle">Track 3 · Home insurance</div>
-<h2>Home insurance subscription, and the Mozaïk options</h2>
-<p class="lead">The user is the future client. They type their address, see the risks of the place and the Mozaïk options that match them, with why. An advisor sees the same thing, but the subscriber comes first.</p>
-<div class="card"><h3>The role, step by step</h3><ol>
-<li>A family has just bought a house at the foot of a slope in Mersch and subscribes online on a Sunday evening.</li>
-<li>They type the address; the page finds the house.</li>
-<li>The risks of the place appear, each with its source; what the base cover already handles; the options that answer the risks found, and why.</li>
-<li>The journey only asks what the data cannot tell (a cellar, valuables, solar panels not visible).</li>
-<li>They compose the contract: each option useful, maybe, or not needed here. The choice stays theirs.</li>
-</ol></div>
-<div class="th">Your starting point: the table we sent you</div>
-<p class="lead">Start from the table of risks, public data and Mozaïk covers in our email of 30 October, with the general conditions sent before it as the reference. Turn each line into a question of the journey, for this address: what does the data show here, which option to suggest, which exclusion to say. Then challenge it and go beyond it.</p>
-<div class="th">Questions to go further</div>
-<ol class="steps">
-<li>Theft: are there public statistics on burglaries by commune or region? Nothing localised was found in the first analysis: worth a search.</li>
-<li>Solar: does the <a href="https://data.public.lu/fr/datasets/68dfb91d59900ae8a71fb120/">solar potential</a> map (Klima-Agence, check its licence) say, roof by roof, when Eco Energies makes sense? Are panels visible on the <a href="https://data.public.lu/fr/datasets/orthophoto-officielle-du-grand-duche-de-luxembourg-edition-ete-2025/">summer 2025 aerial image</a> (ACT, CC0)?</li>
-<li>Buildings: do the <a href="https://data.public.lu/fr/datasets/base-de-donnees-nationale-des-batiments-3d-2023/">footprints and heights</a> (ACT) tell how isolated a house is, or what is exposed?</li>
-<li>Floods: does the scenario (<a href="https://data.public.lu/fr/datasets/flood-hazard-maps-10-year-flood/">HQ10</a>, <a href="https://data.public.lu/fr/datasets/flood-hazard-maps-100-year-flood/">HQ100</a>, <a href="https://data.public.lu/fr/datasets/flood-hazard-maps-extreme/">extreme</a>, AGE, CC0) change the advice?</li>
-</ol>
-<div class="grid" style="margin-top:12px">
-<div class="card"><h3>Fictitious Foyer data, now</h3><p>The share of homes with each Mozaïk option per canton, declared equipment per canton, the natural catastrophes option on the 500 m grid, options chosen at subscription and journeys abandoned by life moment.</p></div>
-<div class="card"><h3>You can ask for</h3><p>Claims by peril and by option at the commune grain. Fictitious and aggregated.</p></div>
-</div>
-<div class="th">A first step, in one week</div>
-<ol class="steps"><li>Have an AI read the general conditions and fill a table per option (what it covers, excludes, the paragraph); check it by hand.</li><li>Take ten addresses, compute the lines of the table for each, and draft a subscription page that suggests the options with one sentence of reason.</li></ol>
-<div class="band">A good result shows: <span>the future client understands why each option is suggested; no question the data already answers; the base cover said for what it covers; the choice left to the person.</span></div>
-<p class="lead" style="margin-top:14px"><b>Write to:</b> the home insurance and subscription experts, through the organising team.</p>
-</section>
-
-<section class="pagebreak">
-<div class="angle">Track 4 · Pricing</div>
-<h2>Pricing, on fictitious data</h2>
-<p class="lead">Build a premium that follows the risk of the address and of the home, and explain it. Fictitious data only: the files of the challenge and a premium grid you invent and label as invented. Never a real tariff.</p>
-<div class="card"><h3>The role, step by step</h3><ol>
-<li>You play the home insurance pricer of a fictitious insurer.</li>
-<li>You start from the risk of an address and of the home: flood or runoff zone, cellar, size, flat or house.</li>
-<li>You build a premium: a base, a factor per risk, options apart, on a grid written "fictitious".</li>
-<li>You explain to the future client what makes their premium go up or down, in plain words.</li>
-<li>You check fairness: no sensitive attribute, nothing personal.</li>
-</ol></div>
-<div class="th">Data</div>
-<div class="grid">
-<div class="card"><h3>Fictitious Foyer data, now</h3><p>The 500 m grid (relative indices for water damage, storm and hail, burglary; 100 is the national mean), homes per commune and canton (cellars, construction year, equipment), Mozaïk options per canton.</p></div>
-<div class="card"><h3>You can ask for</h3><p>Fictitious frequency and average cost by peril, commune and year, and an exposure table, at the grain of the open data.</p></div>
-<div class="card"><h3>Open data</h3><p>Flood and runoff maps (AGE, CC0), <a href="https://data.public.lu/fr/datasets/base-de-donnees-nationale-des-batiments-3d-2023/">3D buildings</a> (size, height), <a href="https://data.public.lu/fr/datasets/prix-de-vente-des-appartements-par-commune/">sale prices</a> (the value at stake, check licence), MeteoLux (CC0).</p></div>
-</div>
-<div class="th">A first step, in one week</div>
-<ol class="steps"><li>A frequency and cost model on the fictitious grid indices; an invented three-factor premium grid.</li><li>The premium of ten addresses, each explained factor by factor.</li></ol>
-<div class="band">A good result shows: <span>a premium you can read, each factor with its weight and its source, "fictitious" on every screen and file, a fairness check, and the limits said.</span></div>
-<p class="lead" style="margin-top:14px"><b>Write to:</b> the pricing experts, through the organising team.</p>
-</section>
-
-<section class="pagebreak">
-<div class="angle">Track 5 · Companies</div>
-<h2>A company and its subscription</h2>
-<p class="lead">A company asks for insurance. Help the underwriter and the prevention expert see every site, each building (not its plot) against the flood zones, the filed accounts, and what is left to ask.</p>
-<div class="card"><h3>The role, step by step</h3><ol>
-<li>A mid-size logistics company asks for a quote: head office in Luxembourg City, a warehouse in the south, a workshop near a river.</li>
-<li>The underwriter needs every site, what is in it, what it risks.</li>
-<li>Each building against the flood zones; dangerous neighbours; the nearest fire station.</li>
-<li>The filed accounts: size, assets. The questions that remain; the prevention expert suggests a visit.</li>
-</ol></div>
-<div class="th">Data</div>
-<table><thead><tr><th>Dataset</th><th>Licence</th><th>What it gives you</th></tr></thead><tbody>
-<tr><td><a href="https://data.public.lu/fr/datasets/hvd-annex-5-companies-and-company-ownership-annual-deposits-2025/">Centrale des bilans, annual deposits</a> (STATEC, one dataset per year)</td><td><span class="pill">check page, cite STATEC</span></td><td>Balance sheets and income statements by RCS number. No address, no activity code, no banks or insurers.</td></tr>
-<tr><td><a href="https://www.gleif.org/en/lei-data/gleif-golden-copy">GLEIF LEI golden copy</a></td><td><span class="pill">CC0</span></td><td>Legal and head office address, group links. Covers about one company in five.</td></tr>
-<tr><td><a href="https://data.public.lu/fr/datasets/base-de-donnees-nationale-des-batiments-3d-2023/">3D buildings 2023</a>, <a href="https://data.public.lu/fr/datasets/plan-cadastral-numerise-pcn/">cadastral parcels</a> (ACT)</td><td><span class="pill">CC0, check page</span> <span class="pill">CC BY 4.0</span></td><td>The building at each site, and its plot, to show where they disagree.</td></tr>
-<tr><td>Flood maps and flash-flood map (AGE)</td><td><span class="pill">CC0</span></td><td>The zones, to intersect with each footprint.</td></tr>
-<tr><td><a href="https://data.public.lu/en/datasets/seveso-iii-directive-seveso-installations/">Seveso</a>, <a href="https://data.public.lu/fr/datasets/emplacements-des-centres-dincendie-et-de-secours/">CGDIS</a>, <a href="https://download.geofabrik.de/europe/luxembourg.html">OpenStreetMap</a></td><td><span class="pill">check page</span> <span class="pill">CC0</span> <span class="pill">ODbL</span></td><td>Dangerous neighbours, help nearby, named business sites (match with care, say "not found" rather than guess).</td></tr>
-</tbody></table>
-<div class="grid" style="margin-top:12px">
-<div class="card"><h3>Fictitious Foyer data</h3><p>None for companies on the site yet: start from the open data, it carries most of the work.</p></div>
-<div class="card"><h3>You can ask for</h3><p>Fictitious companies with several sites (addresses drawn from BD-Adresses), insured values and claims by peril per site.</p></div>
-</div>
-<div class="th">A first step, in one week</div>
-<ol class="steps"><li>Twenty companies with filed accounts and a LEI; their addresses geocoded locally; each building against HQ100 and the flash-flood map.</li><li>Three cases where plot and building disagree; a subscription questionnaire pre-filled with what the data says.</li></ol>
-<div class="band">A good result shows: <span>a site-by-site table (in or out for each scenario, share of footprint), the key figures with their year, the questions left for the client, and "not found" where open data stops.</span></div>
-<p class="lead" style="margin-top:14px"><b>Going further.</b> The 3D models and building heights, for the water depth at each site. <b>Write to:</b> the prevention expert for companies, through the organising team.</p>
-</section>
-</main>
-
+<p class="lead" style="margin-top:18px">What every track shares (who is involved, the problems underneath, what not to do, how to ask a question, how to share your work): <a href="guidelines.html">the guidelines</a>.</p></section></main>
 <footer><div class="wrap">My Risk Compass, a challenge by Foyer for the Student AI Lab 2026 of the University of Luxembourg. Demo values and Foyer data on this site are fictitious.</div></footer>
 <script>(function(){var c=document.getElementById('net');if(!c||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
 var x=c.getContext('2d'),P=[],W,H,d=Math.min(devicePixelRatio||1,2);

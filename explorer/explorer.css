@@ -1,0 +1,41 @@
+/* The address explorer, on top of the site's style (its variables and cards). */
+.xfind{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px;max-width:760px}
+.xfind input{flex:1 1 300px;min-width:0;font:17px Inter,system-ui,sans-serif;color:#fff;background:rgba(255,255,255,.07);border:1px solid var(--line);border-radius:12px;padding:13px 16px}
+.xfind input:focus{outline:none;border-color:var(--lblue);box-shadow:0 0 0 3px rgba(124,154,222,.25)}
+.xfind button,.xlang button{font:700 15px Inter,system-ui,sans-serif;border:0;border-radius:999px;padding:13px 24px;cursor:pointer;color:#fff;background:linear-gradient(90deg,var(--bar),var(--lblue));box-shadow:0 8px 30px rgba(40,87,200,.4)}
+.xlang{display:flex;gap:6px;margin-top:14px}
+.xlang button{font-size:13px;padding:5px 12px;box-shadow:none;background:var(--glass);border:1px solid var(--line);color:var(--soft)}
+.xlang button.on{color:#fff;border-color:var(--lblue);background:rgba(124,154,222,.2)}
+.xchips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.xchips button{font:600 13px Inter,sans-serif;padding:5px 12px;border-radius:999px;cursor:pointer;background:var(--glass);border:1px solid var(--line);color:var(--soft)}
+.xchips button:hover{color:#fff;border-color:var(--lblue)}
+.xprivacy{font-size:14px;color:var(--dim);margin-top:16px;max-width:760px}
+.xbanner{margin-top:26px;border:1px solid rgba(242,123,44,.55);background:rgba(242,123,44,.1);border-radius:14px;padding:14px 18px;color:#FFD3B5;font-size:15px}
+.xbanner b{color:#fff}
+#res{padding-top:34px}
+.xwhere h2{font-size:28px;overflow-wrap:anywhere}
+.xwhere .meta{color:var(--soft);font-size:15px;display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:6px 0 20px}
+.xmapgrid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:18px;align-items:start}
+.xmap{margin:0}
+.xmap svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:16px;background:#06143F}
+.xmap figcaption{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:13px;color:var(--soft);margin-top:8px}
+.xmap figcaption i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+.xtodo h3{font-size:19px}
+.xtodo ol{padding-left:20px;margin-top:6px}.xtodo li{color:var(--soft);font-size:15px;margin:7px 0}.xtodo li b{color:#fff}
+.xtodo .fine{font-size:13px;color:var(--dim);margin-top:12px}
+.xblocks{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-top:22px;align-items:start}
+.xblocks .card{display:flex;flex-direction:column;gap:8px}
+.xblocks .card:hover{transform:none}
+.xblocks h3{display:flex;justify-content:space-between;gap:8px;align-items:baseline}
+dl.xf{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:6px 12px;font-size:15px}
+dl.xf dt{color:var(--soft)}dl.xf dd{color:#fff;font-weight:600;text-align:right;overflow-wrap:anywhere}
+.nf{color:#FFB3AE;font-weight:600}
+.xpill{display:inline-block;font-size:12px;font-weight:700;border-radius:12px;padding:1px 9px;white-space:normal;text-align:left;background:rgba(124,154,222,.14);color:var(--lblue)}
+.xpill.in{background:rgba(240,113,107,.16);color:#FFB3AE}.xpill.out{background:rgba(47,191,155,.16);color:#8FE6CF}
+.xpill.mid{background:rgba(242,184,75,.16);color:#FBD891}.xpill.ill{background:rgba(242,123,44,.16);color:#FFD3B5}
+.xsrc{margin-top:auto;padding-top:10px;border-top:1px solid var(--line);font-size:12.5px;color:var(--dim)}
+.xsrc a{color:var(--soft)}
+.xsteps{padding-left:22px;max-width:860px;color:var(--soft)}.xsteps li{margin:6px 0}
+.xnote{color:var(--soft);font-size:14px}
+@media (max-width:860px){.xmapgrid{grid-template-columns:1fr}}
+@media (max-width:520px){.xblocks{grid-template-columns:1fr}.xwhere h2{font-size:22px}.xfind button{width:100%}}
