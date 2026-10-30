@@ -1,0 +1,224 @@
+{
+ "meta": {
+  "fictitious": true,
+  "note": "FICTITIOUS: simulated claims on the fictitious grid indices; not a tariff.",
+  "source_grid": "donnees_synthetiques/grid_500m.csv (fictitious Foyer data)",
+  "years": 5,
+  "seed": 3010,
+  "cells": 9942
+ },
+ "model": {
+  "water_damage": {
+   "index_column": "water_damage_index",
+   "b0": -3.2185,
+   "b1": 0.952,
+   "se_b0": 0.0069,
+   "se_b1": 0.0333,
+   "observed_frequency": 0.03999,
+   "mean_cost_eur": 2598,
+   "pure_premium_eur": 103.9,
+   "claims": 21210,
+   "exposure_years": 530320
+  },
+  "storm_hail": {
+   "index_column": "storm_hail_index",
+   "b0": -3.6858,
+   "b1": 0.9483,
+   "se_b0": 0.0087,
+   "se_b1": 0.0581,
+   "observed_frequency": 0.02505,
+   "mean_cost_eur": 1957,
+   "pure_premium_eur": 49.02,
+   "claims": 13282,
+   "exposure_years": 530320
+  },
+  "burglary": {
+   "index_column": "burglary_index",
+   "b0": -4.599,
+   "b1": 0.9607,
+   "se_b0": 0.0138,
+   "se_b1": 0.0503,
+   "observed_frequency": 0.01008,
+   "mean_cost_eur": 4110,
+   "pure_premium_eur": 41.43,
+   "claims": 5346,
+   "exposure_years": 530320
+  }
+ },
+ "bands": {
+  "water_damage": [
+   {
+    "band": "50 to 72",
+    "exposure_years": 36710,
+    "claims": 1052,
+    "observed_frequency": 0.02866,
+    "fitted_frequency": 0.0273
+   },
+   {
+    "band": "72 to 80",
+    "exposure_years": 50535,
+    "claims": 1553,
+    "observed_frequency": 0.03073,
+    "fitted_frequency": 0.03059
+   },
+   {
+    "band": "80 to 85",
+    "exposure_years": 46025,
+    "claims": 1504,
+    "observed_frequency": 0.03268,
+    "fitted_frequency": 0.03321
+   },
+   {
+    "band": "85 to 90",
+    "exposure_years": 62995,
+    "claims": 2170,
+    "observed_frequency": 0.03445,
+    "fitted_frequency": 0.03508
+   },
+   {
+    "band": "90 to 95",
+    "exposure_years": 47045,
+    "claims": 1739,
+    "observed_frequency": 0.03696,
+    "fitted_frequency": 0.03691
+   },
+   {
+    "band": "95 to 101",
+    "exposure_years": 51480,
+    "claims": 1990,
+    "observed_frequency": 0.03866,
+    "fitted_frequency": 0.03913
+   },
+   {
+    "band": "101 to 112",
+    "exposure_years": 75715,
+    "claims": 3058,
+    "observed_frequency": 0.04039,
+    "fitted_frequency": 0.0422
+   },
+   {
+    "band": "112 to 176",
+    "exposure_years": 159815,
+    "claims": 8144,
+    "observed_frequency": 0.05096,
+    "fitted_frequency": 0.04991
+   }
+  ],
+  "storm_hail": [
+   {
+    "band": "68 to 83",
+    "exposure_years": 50845,
+    "claims": 989,
+    "observed_frequency": 0.01945,
+    "fitted_frequency": 0.01959
+   },
+   {
+    "band": "83 to 90",
+    "exposure_years": 55710,
+    "claims": 1233,
+    "observed_frequency": 0.02213,
+    "fitted_frequency": 0.02193
+   },
+   {
+    "band": "90 to 95",
+    "exposure_years": 99405,
+    "claims": 2366,
+    "observed_frequency": 0.0238,
+    "fitted_frequency": 0.0232
+   },
+   {
+    "band": "95 to 100",
+    "exposure_years": 103260,
+    "claims": 2490,
+    "observed_frequency": 0.02411,
+    "fitted_frequency": 0.02434
+   },
+   {
+    "band": "100 to 106",
+    "exposure_years": 83655,
+    "claims": 2141,
+    "observed_frequency": 0.02559,
+    "fitted_frequency": 0.0255
+   },
+   {
+    "band": "106 to 115",
+    "exposure_years": 52060,
+    "claims": 1365,
+    "observed_frequency": 0.02622,
+    "fitted_frequency": 0.02744
+   },
+   {
+    "band": "115 to 127",
+    "exposure_years": 44075,
+    "claims": 1278,
+    "observed_frequency": 0.029,
+    "fitted_frequency": 0.02979
+   },
+   {
+    "band": "127 to 173",
+    "exposure_years": 41310,
+    "claims": 1420,
+    "observed_frequency": 0.03437,
+    "fitted_frequency": 0.03317
+   }
+  ],
+  "burglary": [
+   {
+    "band": "44 to 65",
+    "exposure_years": 22620,
+    "claims": 134,
+    "observed_frequency": 0.00592,
+    "fitted_frequency": 0.00615
+   },
+   {
+    "band": "65 to 69",
+    "exposure_years": 18965,
+    "claims": 128,
+    "observed_frequency": 0.00675,
+    "fitted_frequency": 0.00681
+   },
+   {
+    "band": "69 to 73",
+    "exposure_years": 26860,
+    "claims": 192,
+    "observed_frequency": 0.00715,
+    "fitted_frequency": 0.0072
+   },
+   {
+    "band": "73 to 76",
+    "exposure_years": 32990,
+    "claims": 237,
+    "observed_frequency": 0.00718,
+    "fitted_frequency": 0.00755
+   },
+   {
+    "band": "76 to 79",
+    "exposure_years": 35215,
+    "claims": 268,
+    "observed_frequency": 0.00761,
+    "fitted_frequency": 0.00782
+   },
+   {
+    "band": "79 to 83",
+    "exposure_years": 34540,
+    "claims": 266,
+    "observed_frequency": 0.0077,
+    "fitted_frequency": 0.00817
+   },
+   {
+    "band": "83 to 90",
+    "exposure_years": 63225,
+    "claims": 574,
+    "observed_frequency": 0.00908,
+    "fitted_frequency": 0.00869
+   },
+   {
+    "band": "90 to 178",
+    "exposure_years": 295905,
+    "claims": 3547,
+    "observed_frequency": 0.01199,
+    "fitted_frequency": 0.01192
+   }
+  ]
+ }
+}

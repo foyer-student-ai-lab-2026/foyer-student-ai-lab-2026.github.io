@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Seen from the sky: a starter prototype</title><meta name="theme-color" content="#020B2B">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--deep)}
+body{font:16px/1.6 Inter,"Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;color:var(--ink);background:var(--deep);
+background-image:radial-gradient(900px 500px at 85% -10%,rgba(40,87,200,.35),transparent 60%),radial-gradient(700px 500px at -10% 30%,rgba(124,154,222,.14),transparent 60%),
+linear-gradient(rgba(124,154,222,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(124,154,222,.05) 1px,transparent 1px);
+background-size:auto,auto,44px 44px,44px 44px;background-attachment:fixed}
+a{color:var(--lblue)}a:hover{color:#fff}
+.k{font-size:13px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--lblue)}
+.card{border:1px solid var(--line);border-radius:16px;padding:18px 20px;background:var(--glass)}
+table{width:100%;border-collapse:collapse;font-size:14.5px}
+td{padding:10px 8px;border-bottom:1px solid rgba(124,154,222,.1);vertical-align:top;color:var(--soft)}
+.chips button:hover{color:#fff;border-color:var(--lblue)}
+
+:root{--navy:#041D58;--deep:#020B2B;--blue:#20439D;--bar:#2857C8;--lblue:#7C9ADE;--mid:#173682;--ink:#E9EEFB;--soft:#B8C6EA;--dim:#8193BF;
+--line:rgba(124,154,222,.22);--glass:rgba(255,255,255,.045);--or:#F27B2C;--green:#2BB59A;--violet:#B79CFF;--water:#3D8BFF}
+h1,h2,h3,.k,.num,.brand{font-family:"Space Grotesk",Inter,"Segoe UI",system-ui,sans-serif}
+header.top{position:sticky;top:0;z-index:5;background:rgba(2,11,43,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+header.top .in{max-width:1180px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;gap:18px}
+.brand{white-space:nowrap;font-weight:700;letter-spacing:.12em;font-size:14px;color:#fff;text-decoration:none;display:flex;align-items:center;gap:10px}
+.brand svg{height:26px;width:auto}.brand svg path{fill:#fff}.brand span{padding-left:12px;border-left:1px solid var(--line)}
+header.top nav{margin-left:auto;display:flex;gap:6px;font-size:14px;flex-wrap:wrap;justify-content:flex-end}
+header.top nav a,header.top nav button{text-decoration:none;color:var(--soft);padding:6px 12px;border-radius:999px;border:0;background:none;font:inherit;cursor:pointer}
+header.top nav a:hover,header.top nav button:hover,header.top nav .on{color:#fff;background:rgba(124,154,222,.14)}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+.hero .wrap{padding-top:56px;padding-bottom:40px}
+h1{font-size:52px;line-height:1.04;margin:12px 0;letter-spacing:-.03em;background:linear-gradient(90deg,#fff 30%,var(--lblue));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.sub{font-size:19px;color:var(--soft);max-width:820px}
+section{padding:44px 0;border-bottom:1px solid var(--line)}
+h2{font-size:30px;margin-bottom:8px;color:#fff;letter-spacing:-.015em}
+h3{font-size:18px;color:#fff;margin-bottom:6px}
+.lead{font-size:17px;color:var(--soft);max-width:860px;margin-bottom:22px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.card p,.card li{color:var(--soft);font-size:15px}
+.card ol,.card ul{padding-left:20px}.card li{margin:4px 0}
+.num{font-size:13px;font-weight:700;color:var(--lblue);letter-spacing:.12em;margin-bottom:10px}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;counter-reset:s;list-style:none}
+.steps li{counter-increment:s;border:1px solid var(--line);border-radius:14px;padding:14px 16px;background:var(--glass);color:var(--soft);font-size:15px}
+.steps li::before{content:counter(s,decimal-leading-zero);display:block;font:700 13px "Space Grotesk",sans-serif;color:var(--lblue);letter-spacing:.12em;margin-bottom:6px}
+.steps li b{color:#fff}
+th{text-align:left;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);padding:10px 8px;border-bottom:1px solid var(--line);vertical-align:bottom}
+td b{color:#fff}
+tr.grp td{padding-top:22px;font:700 12px "Space Grotesk",sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--lblue);border-bottom:1px solid var(--line)}
+td.src{font-size:12.5px;color:var(--dim);width:24%}
+td.src a{color:var(--soft)}
+.why{display:block;font-size:13px;color:var(--dim);margin-top:2px}
+
+.st{display:inline-block;font:700 11px Inter,system-ui,sans-serif;letter-spacing:.06em;text-transform:uppercase;border-radius:10px;padding:1px 8px;margin-right:6px;white-space:nowrap;vertical-align:1px}
+.st.real{background:rgba(43,181,154,.16);color:var(--green)}
+.st.sample{background:rgba(242,123,44,.16);color:var(--or)}
+.st.fictitious{background:rgba(183,156,255,.16);color:var(--violet)}
+.st.persona{background:rgba(183,156,255,.16);color:var(--violet)}
+.st.computed{background:rgba(124,154,222,.16);color:var(--lblue)}
+.nf{color:var(--dim);font-style:italic}
+.legend{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:13.5px;color:var(--soft);margin:10px 0 0}
+.legend i{display:inline-block;width:14px;height:10px;border-radius:3px;margin-right:6px;vertical-align:0}
+.banner{border:1px solid rgba(242,123,44,.45);border-left:3px solid var(--or);background:rgba(242,123,44,.08);border-radius:12px;padding:12px 16px;color:var(--soft);font-size:14.5px;margin-top:22px;max-width:980px}
+.banner b{color:#fff}
+.map{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:14px;background:#06143D}
+.map text{font-family:Inter,system-ui,sans-serif}
+.maps3{display:grid;grid-template-columns:230px minmax(0,1fr) minmax(0,1fr);gap:16px;align-items:start}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 14px}
+.chips button{font:600 14px Inter,system-ui,sans-serif;color:var(--soft);border:1px solid var(--line);border-radius:999px;padding:6px 14px;background:var(--glass);cursor:pointer}
+.chips button.on{color:#fff;background:linear-gradient(90deg,var(--bar),rgba(124,154,222,.6));border-color:transparent}
+.verdict{font-size:15px;color:#fff;font-weight:600}
+.est{border:1px dashed rgba(124,154,222,.5);border-radius:12px;padding:12px 14px;margin-top:10px;font-size:14px;color:var(--soft)}
+.est b{color:#fff}
+code{font:13px/1.4 ui-monospace,"SF Mono",Menlo,Consolas,monospace;background:rgba(124,154,222,.13);color:#fff;border-radius:6px;padding:1px 6px;overflow-wrap:anywhere}
+footer{padding:28px 0 44px;color:var(--dim);font-size:13.5px}
+footer li{margin:3px 0}
+@media (max-width:900px){.two{grid-template-columns:1fr}.maps3{grid-template-columns:1fr 1fr}.maps3>.card{grid-column:1/-1;max-width:340px}}
+@media (max-width:600px){.maps3{grid-template-columns:1fr}}
+@media (max-width:700px){.brand span{display:none}.brand svg{height:22px}header.top .in{gap:8px;padding:10px 14px}h1{font-size:36px}h2{font-size:25px}
+.hero .wrap{padding-top:36px;padding-bottom:26px}header.top nav a,header.top nav button{padding:5px 8px;font-size:13px}table{font-size:13.5px}
+table.cmp thead{display:none}table.cmp tr,table.cmp td{display:block;width:auto!important}table.cmp tr{border-bottom:1px solid var(--line);padding:6px 0}
+table.cmp td{border:0;padding:3px 4px}table.cmp td[data-h]::before{content:attr(data-h);display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
+table.cmp tr.grp td{padding-top:16px}}
+
+.roofs{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
+.roofs svg{width:100%;height:auto;display:block;border-radius:10px;background:#0B2A2A}
+.tag{display:inline-block;margin:6px 6px 0 0;padding:2px 9px;border-radius:999px;font-size:13px;border:1px solid rgba(184,198,234,.35)}
+.tag.gap{border-color:#F27B2C;color:#F27B2C}</style></head>
+<body><a id="back-site" href="../../demos.html" style="position:fixed;right:14px;bottom:14px;z-index:99;font:600 14px Inter,'Segoe UI',sans-serif;color:#fff;text-decoration:none;padding:8px 14px;border-radius:999px;background:rgba(4,29,88,.88);border:1px solid rgba(124,154,222,.45)">← All demos</a>
+<header class="top"><div class="in"><a class="brand" href="#top"><svg aria-hidden="true" role="img" aria-label="Foyer Group" width="117" height="40" viewBox="0 0 117 40" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="none" overflow="hidden">
+<defs><clipPath id="clip0_492_1922"><rect x="0" y="0" width="117" height="40" fill="#FFFFFF"/></clipPath></defs><g clip-path="url(#clip0_492_1922)"><path d="M111.468 15.626C112.262 14.6853 113.969 13.7283 115.995 13.7159L116 13.7159C116.383 13.7105 116.701 13.7357 117 13.7708 116.827 14.3217 115.971 17.0519 115.802 17.5919 115.378 17.4077 114.922 17.3192 114.396 17.3192 112.669 17.3192 110.923 18.6137 110.923 21.0964L110.923 32.1276 106.925 32.1276 106.925 14.0277 110.923 14.0277 110.923 16.2767 111.468 15.626ZM104.297 24.1807 92.5557 24.1807 92.5557 24.4909C92.5557 27.2247 94.2864 28.99 96.9715 28.99 99.0338 28.99 100.103 28.4109 101.221 27.3417 101.554 27.6723 103.263 29.3393 103.622 29.6906 101.888 31.3684 100.182 32.3418 96.9355 32.3418 91.3826 32.3418 88.5685 29.2079 88.5685 23.0137 88.5685 17.278 91.5821 13.7157 96.431 13.7157 101.208 13.7157 104.297 17.1243 104.297 22.3951L104.297 24.1807ZM92.5414 21.5883 100.321 21.5883 100.306 21.2637C100.271 20.3946 100.157 19.858 99.8546 19.1347 99.2398 17.7696 97.9933 16.9963 96.431 16.9963 94.8688 16.9963 93.6238 17.7735 93.0168 19.1288 92.7099 19.858 92.5946 20.3926 92.5557 21.2637L92.5414 21.5883ZM88.3872 14.028C88.0901 14.8299 80.5123 35.3607 80.5108 35.3681 80.0999 36.4491 79.6881 37.1546 79.1796 37.6645 78.2628 38.5786 77.0158 39.0168 75.3634 38.9995L73.8371 38.9995 73.8371 35.4264 74.6061 35.4264C76.1093 35.4264 76.7493 34.9669 77.2415 33.5291L78.0691 31.122C78.0691 31.122 72.0674 14.8225 71.7743 14.028L75.8073 14.028C75.9531 14.4179 80.1586 26.0217 80.1586 26.0217 80.1586 26.0217 84.1936 14.4287 84.3359 14.028L88.3872 14.028ZM69.1017 15.9274C70.8073 17.7144 71.1399 19.8809 71.1399 23.0139 71.1399 26.6898 70.6083 28.5539 69.1017 30.13 68.3272 30.9571 66.5644 32.342 63.4921 32.342 60.6065 32.342 58.8689 31.1404 57.918 30.13 56.4134 28.5539 55.8783 26.6898 55.8783 23.0139 55.8783 19.3592 56.4134 17.5025 57.918 15.9308 58.8689 14.9185 60.605 13.7159 63.4921 13.7159 66.5679 13.7159 68.3272 15.1023 69.1017 15.9274ZM65.9106 27.8192C66.9906 26.7308 67.0798 24.9254 67.0798 23.0139 67.0798 21.1196 66.9906 19.3256 65.9106 18.2386 65.2992 17.6294 64.4853 17.3192 63.4921 17.3192 62.5058 17.3192 61.7313 17.622 61.1145 18.2386 60.0291 19.3256 59.9404 21.1196 59.9404 23.0139 59.9404 24.9254 60.0291 26.7308 61.1145 27.8192 61.7313 28.4378 62.5097 28.7387 63.4921 28.7387 64.4853 28.7387 65.2973 28.4314 65.9106 27.8192ZM56.6461 7 56.6461 10.8918 47.3868 10.8918 47.3868 17.6685 53.5294 17.6685 53.5294 21.5579 47.3868 21.5579 47.3868 32.1276 43 32.1276 43 7 56.6461 7Z" class="MsftOfcThm_Accent2_Fill_v2" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" fill="#20439D" fill-rule="evenodd" fill-opacity="1" clip-rule="evenodd"/><path d="M6.6018 22.2859 31.7405 22.2859C31.8847 21.3816 32 20.4481 32 19.5146 32 18.5519 31.8847 17.6476 31.7405 16.7433L9.77297 16.7433 6.6018 22.2859Z" class="MsftOfcThm_Accent2_Fill_v2" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" fill="#20439D" fill-opacity="1"/><path d="M2.91171 28.7911C3.74775 29.9872 4.6991 31.0665 5.7946 32L26.1766 32C27.9928 30.4831 29.4631 28.5869 30.4721 26.4282L4.23783 26.4282 2.91171 28.7911Z" class="MsftOfcThm_Accent2_Fill_v2" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" fill="#20439D" fill-opacity="1"/><path d="M30.4721 12.5718C29.4631 10.4131 27.9928 8.51692 26.2054 7L5.82342 7C2.27747 9.9755 0 14.4679 0 19.4854 0 21.1482 0.259459 22.7526 0.720721 24.2696L7.35135 12.5718 30.4721 12.5718Z" class="MsftOfcThm_Accent2_Fill_v2" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" fill="#20439D" fill-opacity="1"/></g></svg><span>My Risk Compass</span></a>
+<nav><a href="#roofs">Roofs</a><a href="#cantons">Cantons</a><a href="#yours">Your part</a></nav></div></header>
+<div class="hero" id="top"><div class="wrap">
+<div class="k">Idea · Seen from the sky · Starter</div>
+<h1>What does a roof say that the contract does not?</h1>
+<p class="sub">Solar panels, a pool, a new annex: visible on the official aerial photos, sometimes missing from the home's contract. A starting point, not a detector: six invented roofs and the shape of the comparison.</p>
+<div class="banner"><b>Demo by the Foyer team.</b> The roofs and what is "seen" on them are <span class="st sample">sample</span> values, drawn by the page; the canton shares are <span class="st fictitious">fictitious</span>. No real photo, no real home. Seeing something on a roof says nothing for sure: it is a question to ask the owner, never a decision.</div>
+</div></div>
+<main class="wrap">
+<section id="roofs"><h2>Six roofs</h2><p class="lead">What a detector might see, against what the contract declares. Orange: they disagree.</p><div class="roofs" id="toits"></div></section>
+<section id="cantons"><h2>Homes with solar panels, by canton</h2><p class="lead" id="cant-src"></p><div style="overflow-x:auto"><table class="cmp" id="cant"></table></div></section>
+<section id="yours"><h2>Your part</h2><ol class="steps" id="questions"></ol>
+<div style="overflow-x:auto;margin-top:16px"><table id="sources"></table></div></section>
+</main>
+<script id="data" type="application/json">{"sources":{"ortho":{"name":"Official orthophoto of Luxembourg","producer":"ACT","licence":"check page","status":"sample","url":"https://data.public.lu/fr/datasets/orthophoto-officielle-du-grand-duche-de-luxembourg-edition-et-millesime-2024/"},"buildings":{"name":"National 3D buildings 2023, footprints","producer":"ACT","licence":"CC0","status":"sample","url":"https://data.public.lu/fr/datasets/base-de-donnees-nationale-des-batiments-3d-2023/"},"solar":{"name":"Solar potential of roofs","producer":"Klima-Agence","licence":"check page","status":"sample","url":"https://data.public.lu/fr/datasets/68dfb91d59900ae8a71fb120/"},"foyer_cantons":{"name":"Homes by canton (homes_by_canton.csv)","producer":"Foyer, challenge data","licence":"challenge use","status":"fictitious"}},"roofs":[{"roof":"R1","commune":"Mersch","footprint_m2":142,"panels_seen":"yes","pool_seen":"no","annex_seen":"no","declared_panels":"no","declared_pool":"no"},{"roof":"R2","commune":"Junglinster","footprint_m2":188,"panels_seen":"yes","pool_seen":"yes","annex_seen":"no","declared_panels":"yes","declared_pool":"no"},{"roof":"R3","commune":"Bertrange","footprint_m2":121,"panels_seen":"no","pool_seen":"no","annex_seen":"yes","declared_panels":"no","declared_pool":"no"},{"roof":"R4","commune":"Clervaux","footprint_m2":205,"panels_seen":"unsure","pool_seen":"no","annex_seen":"no","declared_panels":"no","declared_pool":"no"},{"roof":"R5","commune":"Remich","footprint_m2":96,"panels_seen":"no","pool_seen":"yes","annex_seen":"no","declared_panels":"no","declared_pool":"no"},{"roof":"R6","commune":"Wiltz","footprint_m2":163,"panels_seen":"yes","pool_seen":"no","annex_seen":"yes","declared_panels":"yes","declared_pool":"no"}],"cantons":[{"canton":"Capellen","insured_homes":4580,"share_flats":0.3,"share_owner_occupied":0.43,"median_year_built":1970,"share_with_cellar":0.62,"share_with_solar_panels":0.08,"share_with_alarm":0.37,"share_with_leak_detector":0.12,"share_with_non_return_valve":0.15,"share_high_value_contents":0.09},{"canton":"Clervaux","insured_homes":4660,"share_flats":0.14,"share_owner_occupied":0.65,"median_year_built":1976,"share_with_cellar":0.71,"share_with_solar_panels":0.24,"share_with_alarm":0.29,"share_with_leak_detector":0.07,"share_with_non_return_valve":0.13,"share_high_value_contents":0.07},{"canton":"Diekirch","insured_homes":4940,"share_flats":0.3,"share_owner_occupied":0.45,"median_year_built":1978,"share_with_cellar":0.7,"share_with_solar_panels":0.15,"share_with_alarm":0.3,"share_with_leak_detector":0.13,"share_with_non_return_valve":0.09,"share_high_value_contents":0.11},{"canton":"Echternach","insured_homes":3370,"share_flats":0.13,"share_owner_occupied":0.62,"median_year_built":1977,"share_with_cellar":0.73,"share_with_solar_panels":0.24,"share_with_alarm":0.25,"share_with_leak_detector":0.05,"share_with_non_return_valve":0.14,"share_high_value_contents":0.09},{"canton":"Esch-sur-Alzette","insured_homes":33300,"share_flats":0.61,"share_owner_occupied":0.54,"median_year_built":1981,"share_with_cellar":0.72,"share_with_solar_panels":0.1,"share_with_alarm":0.3,"share_with_leak_detector":0.13,"share_with_non_return_valve":0.16,"share_high_value_contents":0.11},{"canton":"Grevenmacher","insured_homes":4300,"share_flats":0.26,"share_owner_occupied":0.51,"median_year_built":1983,"share_with_cellar":0.75,"share_with_solar_panels":0.11,"share_with_alarm":0.29,"share_with_leak_detector":0.11,"share_with_non_return_valve":0.12,"share_high_value_contents":0.1},{"canton":"Luxembourg","insured_homes":35780,"share_flats":0.57,"share_owner_occupied":0.52,"median_year_built":1969,"share_with_cellar":0.67,"share_with_solar_panels":0.13,"share_with_alarm":0.36,"share_with_leak_detector":0.09,"share_with_non_return_valve":0.07,"share_high_value_contents":0.08},{"canton":"Mersch","insured_homes":4800,"share_flats":0.28,"share_owner_occupied":0.5,"median_year_built":1973,"share_with_cellar":0.59,"share_with_solar_panels":0.14,"share_with_alarm":0.34,"share_with_leak_detector":0.1,"share_with_non_return_valve":0.17,"share_high_value_contents":0.08},{"canton":"Redange","insured_homes":3710,"share_flats":0.09,"share_owner_occupied":0.6,"median_year_built":1974,"share_with_cellar":0.67,"share_with_solar_panels":0.18,"share_with_alarm":0.26,"share_with_leak_detector":0.1,"share_with_non_return_valve":0.13,"share_high_value_contents":0.03},{"canton":"Remich","insured_homes":2520,"share_flats":0.08,"share_owner_occupied":0.64,"median_year_built":1987,"share_with_cellar":0.74,"share_with_solar_panels":0.21,"share_with_alarm":0.27,"share_with_leak_detector":0.08,"share_with_non_return_valve":0.1,"share_high_value_contents":0.06},{"canton":"Vianden","insured_homes":1250,"share_flats":0.11,"share_owner_occupied":0.65,"median_year_built":1974,"share_with_cellar":0.75,"share_with_solar_panels":0.2,"share_with_alarm":0.24,"share_with_leak_detector":0.09,"share_with_non_return_valve":0.13,"share_high_value_contents":0.04},{"canton":"Wiltz","insured_homes":4210,"share_flats":0.11,"share_owner_occupied":0.71,"median_year_built":1969,"share_with_cellar":0.78,"share_with_solar_panels":0.19,"share_with_alarm":0.25,"share_with_leak_detector":0.11,"share_with_non_return_valve":0.11,"share_high_value_contents":0.06}]}</script>
+<script>
+const D = JSON.parse(document.querySelector('script#data').textContent);
+const NS = 'http://www.w3.org/2000/svg';
+
+function esc(s) { return String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c])); }
+function fmt(n, d = 0) { return n == null || n === '' ? null : Number(n).toLocaleString('en-GB', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+function pct(x) { return x == null ? null : Math.round(x * 100) + ' %'; }
+
+
+function statut(srcId, S) {
+  const s = D.sources[srcId];
+  if (!s) throw new Error('unknown source ' + srcId);
+  return `<span class="st ${s.status}" title="${esc(S['st_' + s.status + '_t'])}">${esc(S['st_' + s.status])}</span>`;
+}
+function source(srcId) {
+  const s = D.sources[srcId];
+  const nom = s.url ? `<a href="${s.url}" target="_blank" rel="noopener">${esc(s.name)}</a>` : esc(s.name);
+  return `${nom}, ${esc(s.producer)} · ${esc(s.licence)}`;
+}
+function nonTrouve(S, pourquoi) { return `<span class="nf">${esc(S.not_found)}</span>` + (pourquoi ? `<span class="why">${esc(pourquoi)}</span>` : ''); }
+
+
+function pip(x, y, ring) {
+  let dedans = false;
+  for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+    const [xi, yi] = ring[i], [xj, yj] = ring[j];
+    if ((yi > y) !== (yj > y) && x < (xj - xi) * (y - yi) / (yj - yi) + xi) dedans = !dedans;
+  }
+  return dedans;
+}
+function dansPolygone(x, y, poly) { return pip(x, y, poly[0]) && !poly.slice(1).some(r => pip(x, y, r)); }
+function polygones(geom) { return geom.type === 'Polygon' ? [geom.coordinates] : geom.coordinates; }
+function distSegment(p, a, b) {
+  const dx = b[0] - a[0], dy = b[1] - a[1], l = dx * dx + dy * dy;
+  const t = l ? Math.max(0, Math.min(1, ((p[0] - a[0]) * dx + (p[1] - a[1]) * dy) / l)) : 0;
+  return Math.hypot(p[0] - a[0] - t * dx, p[1] - a[1] - t * dy);
+}
+function distAuBord(p, poly) {
+  let m = Infinity;
+  poly.forEach(r => { for (let i = 1; i < r.length; i++) m = Math.min(m, distSegment(p, r[i - 1], r[i])); });
+  return m;
+}
+
+function versMetres(lat0, lon0) {
+  const kx = 111320 * Math.cos(lat0 * Math.PI / 180), ky = 110574;
+  return ([lon, lat]) => [(lon - lon0) * kx, (lat - lat0) * ky];
+}
+
+
+function svgEl(tag, attrs = {}, parent) {
+  const e = document.createElementNS(NS, tag);
+  for (const k in attrs) e.setAttribute(k, attrs[k]);
+  if (parent) parent.appendChild(e);
+  return e;
+}
+function vue(svg, xmin, ymin, xmax, ymax, w) {
+  const h = Math.round(w * (ymax - ymin) / (xmax - xmin));
+  svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
+  svg.innerHTML = '';
+  const k = w / (xmax - xmin);
+  return { w, h, k, p: ([x, y]) => [(x - xmin) * k, (ymax - y) * k] };
+}
+function chemin(v, pts, ferme) { return pts.map((q, i) => (i ? 'L' : 'M') + v.p(q).map(n => n.toFixed(1)).join(' ')).join('') + (ferme ? 'Z' : ''); }
+function dessinerPoly(svg, v, poly, attrs) { return svgEl('path', Object.assign({ d: poly.map(r => chemin(v, r, true)).join(''), 'fill-rule': 'evenodd' }, attrs), svg); }
+function texte(svg, v, q, s, attrs = {}) {
+  const [x, y] = v.p(q);
+  const t = svgEl('text', Object.assign({ x, y, fill: '#E9EEFB', 'font-size': 12 }, attrs), svg);
+  t.textContent = s;
+  return t;
+}
+function pastille(svg, v, q, r, attrs) { const [x, y] = v.p(q); return svgEl('circle', Object.assign({ cx: x, cy: y, r }, attrs), svg); }
+
+
+function carteDuPays(svg, marques, points, w = 360) {
+  const f = versMetres(49.8, 6.13);
+  const communes = D.communes.features.map(c => ({ nom: c.properties.commune, polys: polygones(c.geometry).map(p => p.map(r => r.map(f))) }));
+  let xs = [], ys = [];
+  communes.forEach(c => c.polys.forEach(p => p[0].forEach(([x, y]) => { xs.push(x); ys.push(y); })));
+  const v = vue(svg, Math.min(...xs) - 800, Math.min(...ys) - 800, Math.max(...xs) + 800, Math.max(...ys) + 800, w);
+  communes.forEach(c => c.polys.forEach(p => dessinerPoly(svg, v, p, {
+    fill: marques[c.nom] || 'rgba(124,154,222,.07)', stroke: 'rgba(124,154,222,.35)', 'stroke-width': .6 })));
+  points.forEach(pt => {
+    const q = f([pt.lon, pt.lat]);
+    pastille(svg, v, q, 5, { fill: pt.couleur, stroke: '#fff', 'stroke-width': 1.5 });
+    texte(svg, v, [q[0] + 1800, q[1] - 600], pt.label, { 'font-size': 13, 'font-weight': 700 });
+  });
+  return v;
+}
+
+
+function traduire(S) {
+  document.documentElement.lang = S._lang;
+  document.querySelectorAll('[data-t]').forEach(e => { e.innerHTML = S[e.dataset.t]; });
+}
+</script>
+<script>
+const S = { not_found: 'not found', st_real: 'real', st_sample: 'sample', st_fictitious: 'fictitious',
+  st_real_t: 'public data', st_sample_t: 'invented in the format of the real source', st_fictitious_t: 'Foyer\'s invented challenge data' };
+
+function toit(r) {
+  const w = 200, h = 140, l = 60 + Math.sqrt(r.footprint_m2) * 4, haut = l * 0.62;
+  const x0 = (w - l) / 2 - (r.pool_seen === 'yes' ? 22 : 0), y0 = (h - haut) / 2;
+  let s = `<svg viewBox="0 0 ${w} ${h}" role="img" aria-label="Roof ${r.roof}">`;
+  s += `<rect width="${w}" height="${h}" fill="#183A2A"/>`;
+  s += `<rect x="${x0}" y="${y0}" width="${l}" height="${haut}" fill="#8A6F5C" stroke="#3B2D24"/><line x1="${x0}" y1="${y0 + haut / 2}" x2="${x0 + l}" y2="${y0 + haut / 2}" stroke="#3B2D24"/>`;
+  if (r.panels_seen !== 'no') for (let i = 0; i < 4; i++) s += `<rect x="${x0 + 8 + i * (l - 16) / 4}" y="${y0 + 6}" width="${(l - 16) / 4 - 3}" height="${haut / 2 - 12}" fill="#1E3A8A" stroke="#93C5FD" stroke-width=".6" opacity="${r.panels_seen === 'unsure' ? .45 : 1}"/>`;
+  if (r.pool_seen === 'yes') s += `<rect x="${x0 + l + 12}" y="${y0 + 10}" width="34" height="22" rx="4" fill="#38BDF8"/>`;
+  if (r.annex_seen === 'yes') s += `<rect x="${x0 + l - 30}" y="${y0 + haut + 4}" width="34" height="20" fill="#A08672" stroke="#3B2D24"/>`;
+  return s + `<text x="8" y="${h - 8}" fill="#E9EEFB" font-size="12">${esc(r.roof)} · ${esc(r.commune)}</text></svg>`;
+}
+const tag = (nom, vu, declare) => {
+  const ecart = (vu === 'yes' && declare === 'no');
+  return `<span class="tag${ecart ? ' gap' : ''}">${esc(nom)}: seen ${esc(vu)}${declare != null ? `, declared ${esc(declare)}` : ''}</span>`;
+};
+document.getElementById('toits').innerHTML = D.roofs.map(r => `<div class="card">${toit(r)}
+  <div>${tag('panels', r.panels_seen, r.declared_panels)}${tag('pool', r.pool_seen, r.declared_pool)}${tag('annex', r.annex_seen, null)}</div>
+  <p class="why">${statut('ortho', S)} ${statut('buildings', S)}</p></div>`).join('');
+
+document.getElementById('cant-src').innerHTML = `${statut('foyer_cantons', S)} ${source('foyer_cantons')}`;
+document.getElementById('cant').innerHTML = '<thead><tr><th>Canton</th><th>Insured homes</th><th>With solar panels</th></tr></thead><tbody>'
+  + D.cantons.slice().sort((a, b) => b.share_with_solar_panels - a.share_with_solar_panels)
+    .map(c => `<tr><td>${esc(c.canton)}</td><td>${fmt(c.insured_homes)}</td><td>${pct(c.share_with_solar_panels)}</td></tr>`).join('') + '</tbody>';
+
+document.getElementById('questions').innerHTML = [
+  'Can panels, pools and annexes be seen reliably on the official orthophoto? At which resolution, with which errors?',
+  'The building, not the plot: match each detection to its footprint.',
+  'How to say "we may have seen" without accusing anyone, and what to ask the owner.',
+  'What stays aggregated (a commune, a canton) and what may never be matched to a person without consent.']
+  .map(q => `<li>${esc(q)}</li>`).join('');
+
+document.getElementById('sources').innerHTML = '<thead><tr><th>Data</th><th>Status</th></tr></thead><tbody>'
+  + Object.keys(D.sources).map(k => `<tr><td>${source(k)}</td><td>${statut(k, S)}</td></tr>`).join('') + '</tbody>';
+</script>
+</body></html>

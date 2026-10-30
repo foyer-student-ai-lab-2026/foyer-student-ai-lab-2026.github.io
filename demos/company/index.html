@@ -1,0 +1,850 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Track 5 prototype, a company and its subscription</title>
+<meta name="theme-color" content="#020B2B">
+<meta name="description" content="Student AI Lab 2026, track 5: every site of a fictitious logistics company, each building against the flood zones, the filed accounts and the underwriting questionnaire. Self-contained, no server, no external request.">
+<style>
+:root{--navy:#041D58;--deep:#020B2B;--blue:#20439D;--bar:#2857C8;--lblue:#7C9ADE;--mid:#173682;--ink:#E9EEFB;--soft:#B8C6EA;--dim:#8193BF;
+--line:rgba(124,154,222,.22);--glass:rgba(255,255,255,.045);--or:#F27B2C;--green:#2FBF9B;--yellow:#FFD166;--red:#FF6B6B;--river:#4FC3F7}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--deep);scroll-padding-top:70px}
+body{font:16px/1.6 Inter,"Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;color:var(--ink);background:var(--deep);
+background-image:radial-gradient(900px 500px at 85% -10%,rgba(40,87,200,.35),transparent 60%),radial-gradient(700px 500px at -10% 30%,rgba(124,154,222,.14),transparent 60%),
+linear-gradient(rgba(124,154,222,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(124,154,222,.05) 1px,transparent 1px);
+background-size:auto,auto,44px 44px,44px 44px}
+a{color:var(--lblue)}a:hover{color:#fff}
+h1,h2,h3,.k,.num,.brand{font-family:"Space Grotesk",Inter,"Segoe UI",system-ui,sans-serif}
+header.top{position:sticky;top:0;z-index:5;background:rgba(2,11,43,.78);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+header.top .in{max-width:1180px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;gap:18px}
+.brand{white-space:nowrap;font-weight:700;letter-spacing:.12em;font-size:14px;color:#fff;text-decoration:none}
+.brand span{color:var(--lblue);padding-left:10px;margin-left:10px;border-left:1px solid var(--line)}
+header.top nav{margin-left:auto;display:flex;gap:4px;font-size:14.5px;overflow-x:auto;scrollbar-width:none}
+header.top nav a{text-decoration:none;color:var(--soft);padding:6px 11px;border-radius:999px;white-space:nowrap}
+header.top nav a:hover{color:#fff;background:rgba(124,154,222,.14)}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+.hero .wrap{padding-top:64px;padding-bottom:52px}
+.k{font-size:13px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--lblue)}
+h1{font-size:54px;line-height:1.04;margin:12px 0 14px;letter-spacing:-.03em;background:linear-gradient(90deg,#fff 30%,var(--lblue));-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{font-size:19px;color:var(--soft);max-width:800px}
+section{padding:56px 0;border-top:1px solid var(--line)}
+h2{font-size:31px;margin-bottom:8px;color:#fff;letter-spacing:-.015em}
+h3{color:#fff}
+.lead{font-size:17.5px;color:var(--soft);max-width:860px;margin-bottom:24px}
+.band{background:linear-gradient(90deg,rgba(242,123,44,.20),rgba(242,123,44,.05));border:1px solid rgba(242,123,44,.4);border-left:3px solid var(--or);border-radius:14px;padding:14px 20px;color:var(--ink);font-size:15px;margin-top:26px;max-width:900px}
+.band b{color:#fff}
+.company{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:28px}
+.fact{border:1px solid var(--line);border-radius:14px;padding:14px 16px;background:var(--glass)}
+.fact .l{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+.fact .v{font:600 18px "Space Grotesk",Inter,sans-serif;color:#fff;margin-top:4px;overflow-wrap:anywhere}
+.fact .s{font-size:12.5px;color:var(--dim);margin-top:4px}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;counter-reset:s}
+.step{counter-increment:s;border:1px solid var(--line);border-radius:16px;padding:18px 20px;background:var(--glass);text-decoration:none;color:var(--soft);transition:border-color .2s,transform .2s;display:block}
+.step:hover{border-color:var(--lblue);transform:translateY(-2px);color:var(--soft)}
+.step::before{content:counter(s,decimal-leading-zero);font:700 13px "Space Grotesk",sans-serif;color:var(--lblue);letter-spacing:.12em;display:block;margin-bottom:8px}
+.step b{color:#fff;display:block;margin-bottom:4px;font-size:16.5px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:16px;background:var(--glass)}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{text-align:left;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);padding:10px 10px;border-bottom:1px solid var(--line);white-space:nowrap;background:rgba(2,11,43,.35)}
+td{padding:10px 10px;border-bottom:1px solid rgba(124,154,222,.1);vertical-align:top;color:var(--soft)}
+tr:last-child td{border-bottom:0}
+td.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+td b{color:#fff}
+.pill{display:inline-block;font-size:12px;font-weight:700;border-radius:12px;padding:1px 9px;white-space:nowrap}
+.zin{background:rgba(255,107,107,.16);color:#FF9C9C}.zout{background:rgba(47,191,155,.14);color:#6FE0C2}
+.nf{background:rgba(255,209,102,.14);color:var(--yellow)}.pre{background:rgba(124,154,222,.16);color:var(--lblue)}
+.ask{background:rgba(242,123,44,.16);color:#FFB27A}.no{background:rgba(129,147,191,.16);color:var(--dim)}
+.src{font-size:12px;color:var(--dim)}
+.viewer{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:18px;align-items:start}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.tabs button,.toggles label{font:600 14px Inter,system-ui,sans-serif;color:var(--soft);background:var(--glass);border:1px solid var(--line);border-radius:999px;padding:7px 14px;cursor:pointer}
+.tabs button[aria-pressed=true]{color:#fff;border-color:var(--lblue);background:rgba(124,154,222,.18)}
+.toggles{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 12px}
+.toggles label{display:inline-flex;align-items:center;gap:7px;font-weight:500;font-size:13.5px;padding:5px 12px}
+.toggles input{accent-color:var(--lblue)}
+.sw{display:inline-block;width:13px;height:13px;border-radius:3px}
+.map{border:1px solid var(--line);border-radius:16px;background:rgba(2,11,43,.55);overflow:hidden}
+.map svg{display:block;width:100%;height:auto;max-height:540px}
+.panel{border:1px solid var(--line);border-radius:16px;background:var(--glass);padding:18px 20px}
+.panel h3{font-size:19px;margin-bottom:2px}
+.panel .addr{color:var(--soft);font-size:14.5px;margin-bottom:10px}
+.panel table{font-size:13.5px}.panel td,.panel th{padding:7px 6px}
+.panel ul{list-style:none;margin-top:12px;display:grid;gap:6px;font-size:14px;color:var(--soft)}
+.panel li b{color:#fff}
+.cases{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.case{border:1px solid var(--line);border-radius:16px;background:var(--glass);padding:16px 18px}
+.case svg{width:100%;height:auto;border-radius:10px;background:rgba(2,11,43,.55);margin:10px 0}
+.case h3{font-size:17px}
+.case p{font-size:14.5px;color:var(--soft)}
+.verdict{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px}
+.verdict div{border:1px solid var(--line);border-radius:10px;padding:8px 10px;font-size:13px;color:var(--soft)}
+.verdict b{display:block;color:#fff;font:600 16px "Space Grotesk",sans-serif}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}
+.kpi{border:1px solid var(--line);border-radius:14px;padding:14px 16px;background:var(--glass)}
+.kpi .l{font-size:13px;color:var(--soft)}
+.kpi .v{font:700 24px "Space Grotesk",sans-serif;color:#fff;margin:2px 0}
+.kpi .d{font-size:12.5px;color:var(--dim)}
+.kpi code{font-size:11.5px}
+.up{color:#6FE0C2}.down{color:#FF9C9C}
+code{font:12.5px/1.4 ui-monospace,"SF Mono",Menlo,Consolas,monospace;background:rgba(124,154,222,.13);color:#fff;border-radius:6px;padding:1px 6px;overflow-wrap:anywhere}
+details{margin-top:16px;border:1px solid var(--line);border-radius:14px;background:var(--glass);padding:12px 16px}
+summary{cursor:pointer;color:#fff;font-weight:600}
+pre{font:12px/1.5 ui-monospace,Menlo,Consolas,monospace;color:var(--soft);max-height:360px;overflow:auto;margin-top:10px;white-space:pre}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{border:1px solid var(--line);border-radius:16px;background:var(--glass);padding:18px 20px}
+.box h3{font-size:18px;margin-bottom:8px}
+ol.plain{margin-left:20px;color:var(--soft);font-size:14.5px;display:grid;gap:6px}
+ol.plain b{color:#fff}
+.q td:first-child{width:30%}
+.q input{width:100%;font:14px Inter,system-ui,sans-serif;color:#fff;background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:8px;padding:6px 10px}
+.q input:focus{outline:none;border-color:var(--lblue)}
+.qh td{background:rgba(124,154,222,.08);color:#fff;font:600 13px "Space Grotesk",sans-serif;letter-spacing:.08em;text-transform:uppercase}
+.btn{display:inline-block;font:600 14px Inter,system-ui,sans-serif;color:#fff;background:linear-gradient(90deg,var(--bar),var(--lblue));border:0;border-radius:999px;padding:9px 18px;cursor:pointer;margin-top:14px}
+.btn.s{background:var(--glass);border:1px solid var(--line)}
+.visit{display:grid;gap:12px}
+.visit .box{display:grid;grid-template-columns:52px 1fr;gap:14px}
+.visit .rk{font:700 30px "Space Grotesk",sans-serif;color:var(--or)}
+.visit p{font-size:14.5px;color:var(--soft)}
+footer{padding:30px 0 44px;color:var(--dim);font-size:14px;border-top:1px solid var(--line)}
+footer p{margin-bottom:8px;max-width:900px}
+@media (max-width:900px){.viewer,.two{grid-template-columns:1fr}.steps{grid-template-columns:1fr 1fr}h1{font-size:40px}}
+@media (max-width:700px){.brand span{display:none}header.top .in{gap:8px;padding:10px 14px}.wrap{padding:0 16px}h1{font-size:34px}h2{font-size:25px}.hero .wrap{padding-top:40px;padding-bottom:36px}section{padding:40px 0}.verdict{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.step{transition:none}}
+</style>
+</head>
+<body><a id="back-site" href="../../demos.html" style="position:fixed;right:14px;bottom:14px;z-index:99;font:600 14px Inter,'Segoe UI',sans-serif;color:#fff;text-decoration:none;padding:8px 14px;border-radius:999px;background:rgba(4,29,88,.88);border:1px solid rgba(124,154,222,.45)">← All demos</a>
+<header class="top"><div class="in">
+  <a class="brand" href="#top">MY RISK COMPASS<span>Track 5 prototype</span></a>
+  <nav aria-label="Sections">
+    <a href="#sites">Sites</a><a href="#map">Map</a><a href="#plot">Plot vs building</a><a href="#accounts">Accounts</a><a href="#questionnaire">Questionnaire</a><a href="#visit">Visit</a><a href="#sources">Sources</a>
+  </nav>
+</div></header>
+
+<main id="top">
+<div class="hero"><div class="wrap">
+  <div class="k">Student AI Lab 2026 · Track 5 · A company and its subscription</div>
+  <h1>Every site, every building, before the quote.</h1>
+  <p class="sub">A logistics company asks for a multi-risk quote. The underwriter needs each site, the building that stands on it, what that building risks, and the company's filed accounts. This page does it from open data only, locally, and says <b>not found</b> where the open data stops.</p>
+  <div class="company" id="company"></div>
+  <p class="band"><b>Everything about the company is fictitious</b>: its name, its RCS number, its sites, its accounts (amounts invented, in the exact format of the Centrale des bilans). The building and zone shapes are synthetic, drawn to show the method; the real layers come from the collect scripts. No director, no contact person, no request to any outside service: this page loads nothing from the network.</p>
+</div></div>
+
+<section id="role"><div class="wrap">
+  <h2>The role, step by step</h2>
+  <p class="lead">The underwriter and the prevention expert follow the same four steps for every company. Each step is a section of this page.</p>
+  <div class="steps">
+    <a class="step" href="#sites"><b>Receive the request</b>Four sites declared: head office, warehouse, workshop by a river, a depot with no street number.</a>
+    <a class="step" href="#map"><b>Find each site and its building</b>Address on BD-Adresses, geocoded locally; the 2023 footprint that holds the point.</a>
+    <a class="step" href="#plot"><b>Face the zones</b>Each building against HQ10, HQ100, extreme flood and flash flood; Seveso neighbours; the nearest fire station.</a>
+    <a class="step" href="#accounts"><b>Read the accounts, ask, visit</b>Key figures with their year; a pre-filled questionnaire; the prevention visit, site by site.</a>
+  </div>
+</div></section>
+
+<section id="sites"><div class="wrap">
+  <h2>Site by site</h2>
+  <p class="lead">One row per declared site. The shares are computed in this page from the shapes (zone clipped by the footprint, area over area), the same way as <code>scripts/intersect_sites.py</code>. Building first; the parcel is shown next to it because it often says something else.</p>
+  <div class="tw"><table id="sitesTable"></table></div>
+  <p class="src" style="margin-top:8px">In: some part of the footprint lies in the zone. Share: area in the zone over footprint area. Sources: BD-Adresses (ACT, CC0), building footprints 2023 (ACT), PCN parcels (ACT, CC BY 4.0), flood and flash-flood hazard maps (AGE, CC0), Seveso (ITM), CGDIS fire and rescue centres (CC0). Shapes synthetic in this prototype.</p>
+</div></section>
+
+<section id="map"><div class="wrap">
+  <h2>Each building against the zones</h2>
+  <p class="lead">The page draws the parcel, the buildings and the zones itself, from coordinates in metres (LUREF, EPSG:2169, around the address point). No map tiles, no basemap service: an address never leaves the page.</p>
+  <div class="tabs" id="siteTabs" role="group" aria-label="Site"></div>
+  <div class="toggles" id="layerToggles"></div>
+  <div class="viewer">
+    <div class="map" id="mapBox"></div>
+    <div class="panel" id="sitePanel"></div>
+  </div>
+</div></section>
+
+<section id="plot"><div class="wrap">
+  <h2>Three cases where the plot and the building disagree</h2>
+  <p class="lead">A parcel can touch a flood zone while its building stands outside, and the other way round. A rule written on the parcel surcharges the wrong site and misses the right one.</p>
+  <div class="cases" id="cases"></div>
+</div></section>
+
+<section id="accounts"><div class="wrap">
+  <h2>The filed accounts</h2>
+  <p class="lead">Read from the Centrale des bilans file (STATEC), by RCS number. The page parses the embedded XML itself, with the field-id fallbacks the real files need. Size and assets frame the quote; the book value of buildings is <b>not</b> an insured value.</p>
+  <div class="kpis" id="kpis"></div>
+  <div class="two" style="margin-top:18px">
+    <div class="box"><h3>What the deposit gives, and what it does not</h3><ol class="plain" id="cdbFacts"></ol></div>
+    <div class="box"><h3>Three traps of the real file</h3><ol class="plain">
+      <li><b>The server cuts the connection.</b> A file streamed directly stopped at a fifth of 2020 without any error. Download to disk, check the size against <code>resources[0].filesize</code>, count the entries read.</li>
+      <li><b>A field id changes with the form version.</b> Take the first present: result <code>8_ResultEx_2020</code>, <code>8_ResultEx_2016</code>, <code>1_ResultEx_2010</code>; debts <code>1_Dett_2016</code>, or before 2016 the sum of <code>1_DettNonSub_2010</code> and <code>1_DettSub_2010</code>. Turnover <code>7_Chida_2010</code> only exists in the complete P&amp;L.</li>
+      <li><b>A correction replaces the original.</b> Keep the latest <code>YearRef</code>, then the latest deposit, and the P&amp;L of the same year.</li>
+    </ol></div>
+  </div>
+  <details><summary>The deposit, as filed (fictitious, STATEC quarterly format)</summary><pre id="cdbRaw"></pre><button class="btn s" id="dlXml" type="button">Download the XML</button></details>
+</div></section>
+
+<section id="questionnaire"><div class="wrap">
+  <h2>The underwriting questionnaire</h2>
+  <p class="lead">What the open data pre-fills, what is left to ask, and what the open data cannot give. A blank stays blank: <b>not found</b> is an answer, a guessed site is not.</p>
+  <div class="tw"><table class="q" id="qTable"></table></div>
+  <button class="btn" id="dlAnswers" type="button">Export the questionnaire (JSON)</button>
+</div></section>
+
+<section id="visit"><div class="wrap">
+  <h2>The prevention visit, proposed</h2>
+  <p class="lead">The prevention expert visits where the data says the risk is, in that order, with a short list of what to check on the spot.</p>
+  <div class="visit" id="visitList"></div>
+</div></section>
+
+<section id="sources"><div class="wrap">
+  <h2>Sources and licences</h2>
+  <p class="lead">One line per source. Every layer is downloaded whole and intersected locally; requests target the whole country or a commune, never a client.</p>
+  <div class="tw"><table id="srcTable"></table></div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <p><b>Fictitious</b>: LOGIFICTA S.à r.l., RCS B999901, its four sites, its accounts and every shape on this page. The address rows follow the exact columns of BD-Adresses; their identifiers and coordinates are illustrative until the extract replaces them.</p>
+  <p><b>Limits</b>: no water depth on the building yet (3D height and LiDAR would give it); straight-line distances to the fire station, not road distances; Seveso and CGDIS positions illustrative; a building is matched by the point in its footprint, or the nearest within 15 m, else not found.</p>
+  <p>Built for the Foyer Student AI Lab 2026, track 5. Data: see Sources. Page: self-contained HTML, system fonts, no network request.</p>
+</div></footer>
+
+<script id="geo" type="application/json">{"_note": "Synthetic geometry in local metres around each address point (x east, y north), origin = coord_est_luref / coord_nord_luref of the BD-Adresses row. Shapes are illustrative, drawn to show the method; the real run reads the AGE flood layers, the ACT 2023 footprints and the PCN parcels. Polygons are lists of [x, y]; buildings and parcels are convex.", "company": {"name": "LOGIFICTA S.à r.l.", "rcs": "B999901", "fictitious": true, "activity": "Road freight and warehousing (stated by the applicant; no open source gives the NACE code)"}, "sites": [{"id": "A", "use": "Head office (offices, server room)", "requested_address": "14, rue de l'Industrie, L-1811 Luxembourg", "bd_adresses_row": 1, "geocode": {"accuracy": 8, "ratio": 1.0, "method": "number + street + postcode"}, "parcel": [[-40, -35], [45, -35], [45, 40], [-40, 40]], "buildings": [{"id": "LU-A-1", "label": "Office block", "levels_from_3d": 5, "polygon": [[-25, -10], [20, -10], [20, 25], [-25, 25]]}], "zones": {"hq10": [], "hq100": [], "extreme": [], "flash": [[[-90, -60], [90, -60], [90, -24], [60, -22], [30, -27], [0, -25], [-30, -29], [-60, -26], [-90, -28]]]}, "river": [], "neighbours": {"seveso": {"found": false, "radius_km": 2}, "fire_station": {"km": 2.1, "bearing_deg": 40}}}, {"id": "B", "use": "Warehouse (racked storage, loading docks, truck yard)", "requested_address": "7, rue du Commerce, L-3450 Bettembourg", "bd_adresses_row": 2, "geocode": {"accuracy": 8, "ratio": 0.97, "method": "number + street + postcode"}, "parcel": [[-90, -60], [70, -60], [70, 60], [-90, 60]], "buildings": [{"id": "LU-B-1", "label": "Warehouse", "levels_from_3d": 1, "polygon": [[-30, -40], [55, -40], [55, 40], [-30, 40]]}], "zones": {"hq10": [[[-200, -120], [-82, -120], [-78, -60], [-84, 0], [-79, 60], [-82, 120], [-200, 120]]], "hq100": [[[-200, -120], [-58, -120], [-52, -60], [-60, -20], [-54, 20], [-57, 60], [-50, 120], [-200, 120]]], "extreme": [[[-200, -120], [-14, -120], [-8, -60], [-12, -20], [-6, 20], [-11, 60], [-4, 120], [-200, 120]]], "flash": []}, "river": [[-135, -130], [-128, -60], [-138, 0], [-130, 60], [-136, 130]], "neighbours": {"seveso": {"found": true, "km": 1.4, "tier": "upper tier", "bearing_deg": 160, "radius_km": 2}, "fire_station": {"km": 1.3, "bearing_deg": 300}}}, {"id": "C", "use": "Workshop (truck maintenance, spare parts, fuel tank, storage annex)", "requested_address": "31, rue de la Sûre, L-9147 Erpeldange-sur-Sûre", "bd_adresses_row": 3, "geocode": {"accuracy": 8, "ratio": 1.0, "method": "number + street + postcode"}, "parcel": [[-50, -120], [50, -120], [50, 40], [-50, 40]], "buildings": [{"id": "LU-C-1", "label": "Workshop", "levels_from_3d": 1, "polygon": [[-30, -5], [30, -5], [30, 35], [-30, 35]]}, {"id": "LU-C-2", "label": "Storage annex", "levels_from_3d": 1, "polygon": [[-20, -100], [10, -100], [10, -80], [-20, -80]]}], "zones": {"hq10": [[[-120, 200], [-120, 30], [-80, 27], [-40, 29], [0, 26], [40, 30], [80, 27], [120, 29], [120, 200]]], "hq100": [[[-120, 200], [-120, 16], [-80, 13], [-40, 17], [0, 14], [40, 16], [80, 12], [120, 15], [120, 200]]], "extreme": [[[-120, 200], [-120, -6], [-80, -9], [-40, -4], [0, -7], [40, -3], [80, -8], [120, -5], [120, 200]]], "flash": []}, "river": [[-130, 85], [-60, 80], [0, 88], [60, 78], [130, 84]], "neighbours": {"seveso": {"found": false, "radius_km": 2}, "fire_station": {"km": 3.6, "bearing_deg": 200}}}, {"id": "D", "use": "Cross-dock depot (declared in the request)", "requested_address": "Zone industrielle, Contern (no number given)", "bd_adresses_row": null, "geocode": {"accuracy": 6, "ratio": 0.71, "method": "street only, no number"}, "parcel": null, "buildings": [], "zones": {}, "river": [], "neighbours": null}]}</script>
+<script id="addr" type="application/json">[{"rue": "Rue de l'Industrie", "numero": "14", "localite": "Luxembourg", "code_postal": "1811", "id_caclr_rue": "900001", "id_caclr_bat": "900101", "lat_wgs84": "49.58212", "lon_wgs84": "6.11902", "coord_est_luref": "77062.0", "coord_nord_luref": "72145.0", "id_geoportail": "900201", "commune": "Luxembourg", "lau2": "0304"}, {"rue": "Rue du Commerce", "numero": "7", "localite": "Bettembourg", "code_postal": "3450", "id_caclr_rue": "900002", "id_caclr_bat": "900102", "lat_wgs84": "49.51634", "lon_wgs84": "6.10541", "coord_est_luref": "76080.0", "coord_nord_luref": "64830.0", "id_geoportail": "900202", "commune": "Bettembourg", "lau2": "0201"}, {"rue": "Rue de la Sûre", "numero": "31", "localite": "Erpeldange-sur-Sûre", "code_postal": "9147", "id_caclr_rue": "900003", "id_caclr_bat": "900103", "lat_wgs84": "49.86190", "lon_wgs84": "6.11312", "coord_est_luref": "76690.0", "coord_nord_luref": "103210.0", "id_geoportail": "900203", "commune": "Erpeldange-sur-Sûre", "lau2": "0807"}]</script>
+<script id="cdb" type="text/plain"><?xml version='1.0' encoding='ISO-8859-15'?>
+
+<STATECCDBDeclarations xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Metadata>
+    <FileStartDate>2026-07-01<\/FileStartDate>
+    <FileEndDate>2026-09-30<\/FileEndDate>
+    <FileDateGeneration>2026-09-30T10:01:07Z<\/FileDateGeneration>
+    <VersionXsd>1.0<\/VersionXsd>
+  <\/Metadata>
+  <Declarations STATECPublicationDate="2026-07-15">
+    <Declarer>
+      <RcsNumber>B999901<\/RcsNumber>
+      <LegalUnitName>LOGIFICTA S.à r.l.<\/LegalUnitName>
+      <Declaration language="FR" model="1" type="CA_BILAN">
+        <StartDate>2025-01-01<\/StartDate>
+        <EndDate>2025-12-31<\/EndDate>
+        <YearRef>2025<\/YearRef>
+        <RCSDepositDate>2026-07-14T09:12:40Z<\/RCSDepositDate>
+        <ID_Doc>9990001<\/ID_Doc>
+        <Currency>EUR<\/Currency>
+        <FormData>
+          <Field dataType="DECIMAL" ecdf="201" id="0_Actif_2010">
+            <Label>TOTAL DU BILAN (ACTIF)<\/Label>
+            <Data>17274400.00<\/Data>
+            <PreviousData>16724500.00<\/PreviousData>
+            <Reference xsi:nil="true" />
+            <Field dataType="DECIMAL" ecdf="109" id="2_AI_2010">
+              <Label>Actif immobilisé<\/Label>
+              <Data>10313350.00<\/Data>
+              <PreviousData>10143000.00<\/PreviousData>
+              <Reference xsi:nil="true" />
+              <Field dataType="DECIMAL" ecdf="125" id="2_ImmoCorp_2010">
+                <Label>Immobilisations corporelles<\/Label>
+                <Data>10313350.00<\/Data>
+                <PreviousData>10143000.00<\/PreviousData>
+                <Reference xsi:nil="true" />
+                <Field dataType="DECIMAL" ecdf="127" id="2_TerrConst_2010">
+                  <Label>Terrains et constructions<\/Label>
+                  <Data>6120400.00<\/Data>
+                  <PreviousData>6385900.00<\/PreviousData>
+                  <Reference xsi:nil="true" />
+                <\/Field>
+                <Field dataType="DECIMAL" ecdf="129" id="2_InstaTechMach_2010">
+                  <Label>Installations techniques et machines<\/Label>
+                  <Data>1874300.00<\/Data>
+                  <PreviousData>1652800.00<\/PreviousData>
+                  <Reference xsi:nil="true" />
+                <\/Field>
+                <Field dataType="DECIMAL" ecdf="131" id="2_AutInsta_2010">
+                  <Label>Autres installations, outillage et mobilier<\/Label>
+                  <Data>2318650.00<\/Data>
+                  <PreviousData>2104300.00<\/PreviousData>
+                  <Reference xsi:nil="true" />
+                <\/Field>
+              <\/Field>
+            <\/Field>
+            <Field dataType="DECIMAL" ecdf="151" id="2_AC_2010">
+              <Label>Actif circulant<\/Label>
+              <Data>6864180.00<\/Data>
+              <PreviousData>6497290.00<\/PreviousData>
+              <Reference xsi:nil="true" />
+              <Field dataType="DECIMAL" ecdf="153" id="3_Stocks_2010">
+                <Label>Stocks<\/Label>
+                <Data>412800.00<\/Data>
+                <PreviousData>389100.00<\/PreviousData>
+                <Reference xsi:nil="true" />
+                <Field dataType="DECIMAL" ecdf="155" id="3_MatPremConso_2010">
+                  <Label>Matières premières et consommables<\/Label>
+                  <Data>412800.00<\/Data>
+                  <PreviousData>389100.00<\/PreviousData>
+                  <Reference xsi:nil="true" />
+                <\/Field>
+              <\/Field>
+              <Field dataType="DECIMAL" ecdf="163" id="4_Crea_2010">
+                <Label>Créances<\/Label>
+                <Data>5304650.00<\/Data>
+                <PreviousData>4789720.00<\/PreviousData>
+                <Reference xsi:nil="true" />
+                <Field dataType="DECIMAL" ecdf="165" id="4_CreaVente_2010">
+                  <Label>Créances résultant de ventes et prestations de services<\/Label>
+                  <Data>4986210.00<\/Data>
+                  <PreviousData>4512770.00<\/PreviousData>
+                  <Reference xsi:nil="true" />
+                  <Field dataType="DECIMAL" ecdf="167" id="4_CreaVenteMoins_2010">
+                    <Label>dont la durée résiduelle est inférieure ou égale à  un an<\/Label>
+                    <Data>4986210.00<\/Data>
+                    <PreviousData>4512770.00<\/PreviousData>
+                    <Reference xsi:nil="true" />
+                  <\/Field>
+                <\/Field>
+                <Field dataType="DECIMAL" ecdf="183" id="4_AutCrea_2010">
+                  <Label>Autres créances<\/Label>
+                  <Data>318440.00<\/Data>
+                  <PreviousData>276950.00<\/PreviousData>
+                  <Reference xsi:nil="true" />
+                  <Field dataType="DECIMAL" ecdf="185" id="4_AutCreaMoins_2010">
+                    <Label>dont la durée résiduelle est inférieure ou égale à  un an<\/Label>
+                    <Data>318440.00<\/Data>
+                    <PreviousData>276950.00<\/PreviousData>
+                    <Reference xsi:nil="true" />
+                  <\/Field>
+                <\/Field>
+              <\/Field>
+              <Field dataType="DECIMAL" ecdf="197" id="5_FinAvoir_2010">
+                <Label>Avoirs en banques, avoirs en compte de chèques postaux, chèques et en caisse<\/Label>
+                <Data>1146730.00<\/Data>
+                <PreviousData>1318470.00<\/PreviousData>
+                <Reference xsi:nil="true" />
+              <\/Field>
+            <\/Field>
+            <Field dataType="DECIMAL" ecdf="199" id="4_ReguActif_2010">
+              <Label>Comptes de régularisation<\/Label>
+              <Data>96870.00<\/Data>
+              <PreviousData>84210.00<\/PreviousData>
+              <Reference xsi:nil="true" />
+            <\/Field>
+          <\/Field>
+          <Field dataType="DECIMAL" ecdf="405" id="0_Passif_2010">
+            <Label>TOTAL DU BILAN (CAPITAUX PROPRES ET PASSIF)<\/Label>
+            <Data>17274400.00<\/Data>
+            <PreviousData>16724500.00<\/PreviousData>
+            <Reference xsi:nil="true" />
+            <Field dataType="DECIMAL" ecdf="301" id="1_CapProp_2010">
+              <Label>Capitaux propres<\/Label>
+              <Data>5105230.00<\/Data>
+              <PreviousData>4486990.00<\/PreviousData>
+              <Reference xsi:nil="true" />
+              <Field dataType="DECIMAL" ecdf="303" id="1_CapSous_2010">
+                <Label>Capital souscrit<\/Label>
+                <Data>250000.00<\/Data>
+                <PreviousData>250000.00<\/PreviousData>
+                <Reference xsi:nil="true" />
+              <\/Field>
+              <Field dataType="DECIMAL" ecdf="309" id="1_Res_2016">
+                <Label>Réserves<\/Label>
+                <Data>25000.00<\/Data>
+                <PreviousData>25000.00<\/PreviousData>
+                <Reference xsi:nil="true" />
+                <Field dataType="DECIMAL" ecdf="311" id="1_ResLeg_2010">
+                  <Label>Réserve légale<\/Label>
+                  <Data>25000.00<\/Data>
+                  <PreviousData>25000.00<\/PreviousData>
+                  <Reference xsi:nil="true" />
+                <\/Field>
+              <\/Field>
+              <Field dataType="DECIMAL" ecdf="319" id="1_ResultRep_2010">
+                <Label>Résultats reportés<\/Label>
+                <Data>4211990.00<\/Data>
+                <PreviousData>3988870.00<\/PreviousData>
+                <Reference xsi:nil="true" />
+              <\/Field>
+              <Field dataType="DECIMAL" ecdf="321" id="8_ResultEx_2020">
+                <Label>Résultat de l'exercice<\/Label>
+                <Data>618240.00<\/Data>
+                <PreviousData>223120.00<\/PreviousData>
+                <Reference xsi:nil="true" />
+              <\/Field>
+            <\/Field>
+            <Field dataType="DECIMAL" ecdf="331" id="1_Provis_2010">
+              <Label>Provisions (pour risques et charges)<\/Label>
+              <Data>278800.00<\/Data>
+              <PreviousData>229600.00<\/PreviousData>
+              <Reference xsi:nil="true" />
+              <Field dataType="DECIMAL" ecdf="335" id="1_ProvisImp_2010">
+                <Label>Provisions pour impôts<\/Label>
+                <Data>182300.00<\/Data>
+                <PreviousData>141600.00<\/PreviousData>
+                <Reference xsi:nil="true" />
+              <\/Field>
+              <Field dataType="DECIMAL" ecdf="337" id="1_ProvisAut_2010">
+                <Label>Autres provisions<\/Label>
+                <Data>96500.00<\/Data>
+                <PreviousData>88000.00<\/PreviousData>
+                <Reference xsi:nil="true" />
+              <\/Field>
+            <\/Field>
+            <Field dataType="DECIMAL" ecdf="435" id="1_Dett_2016">
+              <Label>Dettes<\/Label>
+              <Data>11778140.00<\/Data>
+              <PreviousData>11965140.00<\/PreviousData>
+              <Reference xsi:nil="true" />
+              <Field dataType="DECIMAL" ecdf="355" id="1_DettEtblCred_2010">
+                <Label>Dettes envers des établissements de crédit<\/Label>
+                <Data>6904170.00<\/Data>
+                <PreviousData>7213040.00<\/PreviousData>
+                <Reference xsi:nil="true" />
+              <\/Field>
+              <Field dataType="DECIMAL" ecdf="367" id="4_DettAchat_2010">
+                <Label>Dettes sur achats et prestations de services<\/Label>
+                <Data>2733420.00<\/Data>
+                <PreviousData>2560350.00<\/PreviousData>
+                <Reference xsi:nil="true" />
+                <Field dataType="DECIMAL" ecdf="369" id="4_DettAchatMoins_2010">
+                  <Label>dont la durée résiduelle est inférieure ou égale à  un an<\/Label>
+                  <Data>2733420.00<\/Data>
+                  <PreviousData>2560350.00<\/PreviousData>
+                  <Reference xsi:nil="true" />
+                <\/Field>
+              <\/Field>
+              <Field dataType="DECIMAL" ecdf="451" id="4_DettAutDett_2016">
+                <Label>Autres dettes<\/Label>
+                <Data>2140550.00<\/Data>
+                <PreviousData>2191750.00<\/PreviousData>
+                <Reference xsi:nil="true" />
+                <Field dataType="DECIMAL" ecdf="393" id="4_DettFisc_2010">
+                  <Label>Dettes fiscales<\/Label>
+                  <Data>287950.00<\/Data>
+                  <PreviousData>241880.00<\/PreviousData>
+                  <Reference xsi:nil="true" />
+                <\/Field>
+                <Field dataType="DECIMAL" ecdf="395" id="4_DettSecSoc_2010">
+                  <Label>Dettes au titre de la sécurité sociale<\/Label>
+                  <Data>528620.00<\/Data>
+                  <PreviousData>497840.00<\/PreviousData>
+                  <Reference xsi:nil="true" />
+                <\/Field>
+                <Field dataType="DECIMAL" ecdf="397" id="4_AutDett_2010">
+                  <Label>Autres dettes<\/Label>
+                  <Data>1323980.00<\/Data>
+                  <PreviousData>1452030.00<\/PreviousData>
+                  <Reference xsi:nil="true" />
+                <\/Field>
+              <\/Field>
+            <\/Field>
+            <Field dataType="DECIMAL" ecdf="403" id="4_ReguPassif_2010">
+              <Label>Comptes de régularisation<\/Label>
+              <Data>112230.00<\/Data>
+              <PreviousData>42770.00<\/PreviousData>
+              <Reference xsi:nil="true" />
+            <\/Field>
+          <\/Field>
+        <\/FormData>
+      <\/Declaration>
+      <Declaration language="FR" model="1" type="CA_COMPP">
+        <StartDate>2025-01-01<\/StartDate>
+        <EndDate>2025-12-31<\/EndDate>
+        <YearRef>2025<\/YearRef>
+        <RCSDepositDate>2026-07-14T09:12:40Z<\/RCSDepositDate>
+        <ID_Doc>9990002<\/ID_Doc>
+        <Currency>EUR<\/Currency>
+        <FormData>
+          <Field dataType="DECIMAL" ecdf="701" id="7_Chida_2010">
+            <Label>Chiffre d'affaires net<\/Label>
+            <Data>24718350.00<\/Data>
+            <PreviousData>22964120.00<\/PreviousData>
+            <Reference xsi:nil="true" />
+          <\/Field>
+          <Field dataType="DECIMAL" ecdf="713" id="7_AutExpl_2020">
+            <Label>Autres produits d'exploitation<\/Label>
+            <Data>186400.00<\/Data>
+            <PreviousData>142900.00<\/PreviousData>
+            <Reference xsi:nil="true" />
+          <\/Field>
+          <Field dataType="DECIMAL" ecdf="671" id="6_MatPremAutExt_2016">
+            <Label>Matières premières et consommables et autres charges externes<\/Label>
+            <Data>-13337030.00<\/Data>
+            <PreviousData>-12567810.00<\/PreviousData>
+            <Reference xsi:nil="true" />
+            <Field dataType="DECIMAL" ecdf="601" id="6_MarchMatPrem_2010">
+              <Label>Matières premières et consommables<\/Label>
+              <Data>-4012860.00<\/Data>
+              <PreviousData>-3866270.00<\/PreviousData>
+              <Reference xsi:nil="true" />
+            <\/Field>
+            <Field dataType="DECIMAL" ecdf="603" id="6_AutExt_2010">
+              <Label>Autres charges externes<\/Label>
+              <Data>-9324170.00<\/Data>
+              <PreviousData>-8701540.00<\/PreviousData>
+              <Reference xsi:nil="true" />
+            <\/Field>
+          <\/Field>
+          <Field dataType="DECIMAL" ecdf="605" id="6_Perso_2010">
+            <Label>Frais de personnel<\/Label>
+            <Data>-8896330.00<\/Data>
+            <PreviousData>-8393470.00<\/PreviousData>
+            <Reference xsi:nil="true" />
+            <Field dataType="DECIMAL" ecdf="607" id="6_PersoSalTrait_2010">
+              <Label>Salaires et traitements<\/Label>
+              <Data>-7612480.00<\/Data>
+              <PreviousData>-7184310.00<\/PreviousData>
+              <Reference xsi:nil="true" />
+            <\/Field>
+            <Field dataType="DECIMAL" ecdf="609" id="6_SocPartPatr_2010">
+              <Label>Charges sociales<\/Label>
+              <Data>-1187550.00<\/Data>
+              <PreviousData>-1120750.00<\/PreviousData>
+              <Reference xsi:nil="true" />
+            <\/Field>
+            <Field dataType="DECIMAL" ecdf="613" id="6_AutFraisPerso_2016">
+              <Label>Autres frais de personnel<\/Label>
+              <Data>-96300.00<\/Data>
+              <PreviousData>-88410.00<\/PreviousData>
+              <Reference xsi:nil="true" />
+            <\/Field>
+          <\/Field>
+          <Field dataType="DECIMAL" ecdf="657" id="8_CorrVal_2016">
+            <Label>Corrections de valeur<\/Label>
+            <Data>-1494720.00<\/Data>
+            <PreviousData>-1401880.00<\/PreviousData>
+            <Reference xsi:nil="true" />
+            <Field dataType="DECIMAL" ecdf="659" id="8_CorrValFraisEtabIICII_2016">
+              <Label>sur frais d'établissement et sur immobilisations corporelles et incorporelles<\/Label>
+              <Data>-1494720.00<\/Data>
+              <PreviousData>-1401880.00<\/PreviousData>
+              <Reference xsi:nil="true" />
+            <\/Field>
+          <\/Field>
+          <Field dataType="DECIMAL" ecdf="621" id="6_AutExpl_2020">
+            <Label>Autres charges d'exploitation<\/Label>
+            <Data>-186950.00<\/Data>
+            <PreviousData>-171400.00<\/PreviousData>
+            <Reference xsi:nil="true" />
+          <\/Field>
+          <Field dataType="DECIMAL" ecdf="627" id="6_IntCharFin_2016">
+            <Label>Intérêts et autres charges financières<\/Label>
+            <Data>-238130.00<\/Data>
+            <PreviousData>-251900.00<\/PreviousData>
+            <Reference xsi:nil="true" />
+            <Field dataType="DECIMAL" ecdf="631" id="6_IntCharFinAut_2016">
+              <Label>autres intérêts et charges financières<\/Label>
+              <Data>-238130.00<\/Data>
+              <PreviousData>-251900.00<\/PreviousData>
+              <Reference xsi:nil="true" />
+            <\/Field>
+          <\/Field>
+          <Field dataType="DECIMAL" ecdf="635" id="6_ImpResult_2010">
+            <Label>Impôts sur le résultat<\/Label>
+            <Data>-133350.00<\/Data>
+            <PreviousData>-97440.00<\/PreviousData>
+            <Reference xsi:nil="true" />
+          <\/Field>
+          <Field dataType="DECIMAL" ecdf="667" id="8_ResultAprImp_2016">
+            <Label>Résultat après impôts sur le résultat<\/Label>
+            <Data>618240.00<\/Data>
+            <PreviousData>223120.00<\/PreviousData>
+            <Reference xsi:nil="true" />
+          <\/Field>
+          <Field dataType="DECIMAL" ecdf="669" id="8_ResultEx_2020">
+            <Label>Résultat de l'exercice<\/Label>
+            <Data>618240.00<\/Data>
+            <PreviousData>223120.00<\/PreviousData>
+            <Reference xsi:nil="true" />
+          <\/Field>
+        <\/FormData>
+      <\/Declaration>
+    <\/Declarer>
+  <\/Declarations>
+<\/STATECCDBDeclarations>
+</script>
+
+<script>
+(function(){
+"use strict";
+const lire = id => document.getElementById(id).textContent.replace(/<\\\//g, "</");
+const GEO = JSON.parse(lire("geo")), ADDR = JSON.parse(lire("addr")), CDB = lire("cdb");
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fmt = (n, d=0) => n.toLocaleString("en-GB", {minimumFractionDigits:d, maximumFractionDigits:d});
+const SCEN = [
+  {k:"hq10", name:"HQ10", long:"10-year flood", col:"#20439D", op:.62},
+  {k:"hq100", name:"HQ100", long:"100-year flood", col:"#2857C8", op:.42},
+  {k:"extreme", name:"Extreme", long:"extreme flood", col:"#7C9ADE", op:.26},
+  {k:"flash", name:"Flash flood", long:"heavy rain and flash floods", col:"#F27B2C", op:.5}
+];
+
+
+function aire(p){let s=0;for(let i=0;i<p.length;i++){const a=p[i],b=p[(i+1)%p.length];s+=a[0]*b[1]-b[0]*a[1];}return Math.abs(s)/2;}
+function orient(p){let s=0;for(let i=0;i<p.length;i++){const a=p[i],b=p[(i+1)%p.length];s+=a[0]*b[1]-b[0]*a[1];}return s>0?p:p.slice().reverse();}
+function decouper(sujet, convexe){
+  let out=sujet; const c=orient(convexe);
+  for(let i=0;i<c.length && out.length;i++){
+    const A=c[i],B=c[(i+1)%c.length], inp=out; out=[];
+    const dedans=p=>(B[0]-A[0])*(p[1]-A[1])-(B[1]-A[1])*(p[0]-A[0])>=0;
+    const croise=(p,q)=>{const dx=q[0]-p[0],dy=q[1]-p[1],ex=B[0]-A[0],ey=B[1]-A[1];const t=((A[0]-p[0])*ey-(A[1]-p[1])*ex)/(dx*ey-dy*ex);return [p[0]+t*dx,p[1]+t*dy];};
+    for(let j=0;j<inp.length;j++){const p=inp[(j+inp.length-1)%inp.length],q=inp[j];
+      if(dedans(q)){if(!dedans(p))out.push(croise(p,q));out.push(q);}else if(dedans(p))out.push(croise(p,q));}
+  }
+  return out;
+}
+function part(obj, zones){let c=0;(zones||[]).forEach(z=>{const r=decouper(z,obj);if(r.length>=3)c+=aire(r);});return {inz:c,area:aire(obj),pct:100*c/aire(obj)};}
+function siteShares(s){
+  const r={};
+  SCEN.forEach(sc=>{
+    if(!s.buildings.length){r[sc.k]=null;return;}
+    const z=s.zones[sc.k]||[];
+    const b=s.buildings.map(x=>({id:x.id,label:x.label,...part(x.polygon,z)}));
+    const tot=b.reduce((a,x)=>a+x.area,0), inz=b.reduce((a,x)=>a+x.inz,0);
+    r[sc.k]={building:{pct:100*inz/tot,inz,area:tot},parcel:part(s.parcel,z),each:b};
+  });
+  return r;
+}
+GEO.sites.forEach(s=>{s.shares=siteShares(s);s.addr=s.bd_adresses_row?ADDR[s.bd_adresses_row-1]:null;});
+const site = id => GEO.sites.find(s=>s.id===id);
+
+function pill(r){
+  if(r===null||r===undefined) return '<span class="pill nf">not found</span>';
+  return r.pct>0?`<span class="pill zin">in · ${fmt(r.pct,r.pct<10?1:0)}%</span>`:'<span class="pill zout">out</span>';
+}
+
+
+const xml = new DOMParser().parseFromString(CDB.replace(/^<\?xml[^>]*\?>/,""), "application/xml");
+const declarer = xml.querySelector("Declarer");
+const decls = [...declarer.querySelectorAll("Declaration")];
+function champ(ids){
+  for(const id of ids){for(const d of decls){const f=d.querySelector(`Field[id="${id}"]`);
+    if(f){const val=t=>{const e=[...f.children].find(c=>c.tagName===t);return e&&e.textContent?parseFloat(e.textContent):null;};
+      return {id, ecdf:f.getAttribute("ecdf"), label:[...f.children].find(c=>c.tagName==="Label").textContent, n:val("Data"), n1:val("PreviousData"), type:d.getAttribute("type"), year:+d.querySelector("YearRef").textContent};}}}
+  return null;
+}
+const RCS = declarer.querySelector("RcsNumber").textContent, NAME = declarer.querySelector("LegalUnitName").textContent;
+const YEAR = +decls[0].querySelector("YearRef").textContent, DEPOSIT = decls[0].querySelector("RCSDepositDate").textContent.slice(0,10);
+const KF = {
+  assets:{t:"Total balance sheet", ids:["0_Actif_2010"]},
+  turnover:{t:"Net turnover", ids:["7_Chida_2010"]},
+  result:{t:"Result for the year", ids:["8_ResultEx_2020","8_ResultEx_2016","1_ResultEx_2010"]},
+  equity:{t:"Equity", ids:["1_CapProp_2010"]},
+  debts:{t:"Debts", ids:["1_Dett_2016"]},
+  cash:{t:"Cash at bank and in hand", ids:["5_FinAvoir_2010"]},
+  staff:{t:"Staff costs", ids:["6_Perso_2010"]},
+  tangible:{t:"Tangible fixed assets", ids:["2_ImmoCorp_2010"]},
+  land:{t:"Land and buildings", ids:["2_TerrConst_2010"]},
+  machines:{t:"Technical installations and machinery", ids:["2_InstaTechMach_2010"]},
+  stocks:{t:"Stocks", ids:["3_Stocks_2010"]}
+};
+Object.values(KF).forEach(k=>k.f=champ(k.ids));
+const M = v => fmt(Math.abs(v)/1e6, 2)+" M€";
+
+
+$("company").innerHTML = [
+  ["Legal name", NAME, "Centrale des bilans, LegalUnitName · fictitious"],
+  ["RCS number", RCS, "Centrale des bilans, RcsNumber · fictitious"],
+  ["LEI", "not found", "GLEIF golden copy covers about one company in five"],
+  ["Activity code (NACE)", "not found", "no open source gives it; declared: "+GEO.company.activity.split(" (")[0].toLowerCase()],
+  ["Latest accounts", `${YEAR}, filed ${DEPOSIT}`, "complete balance sheet and P&L"],
+  ["Directors, contacts", "not collected", "personal data: not in scope"]
+].map(([l,v,s])=>`<div class="fact"><div class="l">${esc(l)}</div><div class="v">${v==="not found"||v==="not collected"?`<span class="pill ${v==="not found"?"nf":"no"}">${v}</span>`:esc(v)}</div><div class="s">${esc(s)}</div></div>`).join("");
+
+
+(function(){
+  const h = `<thead><tr><th>Site</th><th>Use</th><th>Address (BD-Adresses)</th><th>Building</th>${SCEN.map(s=>`<th>${s.name}<br><span style="text-transform:none;letter-spacing:0">building · parcel</span></th>`).join("")}<th>Seveso ≤ 2 km</th><th>Fire station</th></tr></thead>`;
+  const rows = GEO.sites.map(s=>{
+    const a=s.addr, found=s.buildings.length>0;
+    const adr = a?`${esc(a.numero)}, ${esc(a.rue)}<br>${esc(a.code_postal)} ${esc(a.localite)}<br><span class="src">accuracy ${s.geocode.accuracy} · ratio ${s.geocode.ratio}</span>`:`<span class="pill nf">not found</span><br><span class="src">${esc(s.requested_address)}<br>accuracy ${s.geocode.accuracy}: ${esc(s.geocode.method)}</span>`;
+    const bat = found?`<b>${fmt(s.shares.hq100.building.area)} m²</b><br><span class="src">${s.buildings.map(b=>esc(b.id)).join(", ")}</span>`:'<span class="pill nf">not found</span>';
+    const cells = SCEN.map(sc=>{const r=s.shares[sc.k];return `<td>${r?pill(r.building)+'<br><span class="src">parcel '+(r.parcel.pct>0?fmt(r.parcel.pct,r.parcel.pct<10?1:0)+"%":"out")+"</span>":pill(null)}</td>`;}).join("");
+    const n=s.neighbours;
+    const sev = n?(n.seveso.found?`<span class="pill zin">yes · ${n.seveso.km} km</span><br><span class="src">${esc(n.seveso.tier)}</span>`:'<span class="pill zout">none</span>'):pill(null);
+    const cis = n?`<b>${n.fire_station.km} km</b><br><span class="src">straight line</span>`:pill(null);
+    const u=s.use.split(" ("); return `<tr><td><b>${s.id}</b></td><td><b>${esc(u[0])}</b>${u[1]?`<br><span class="src">${esc(u[1].replace(/\)$/,""))}</span>`:""}</td><td>${adr}</td><td>${bat}</td>${cells}<td>${sev}</td><td>${cis}</td></tr>`;
+  }).join("");
+  $("sitesTable").innerHTML = h+"<tbody>"+rows+"</tbody>";
+})();
+
+
+const state = {site:"C", layers:{hq10:true,hq100:true,extreme:true,flash:true,parcel:true}};
+function bbox(pts){const xs=pts.map(p=>p[0]),ys=pts.map(p=>p[1]);return [Math.min(...xs),Math.min(...ys),Math.max(...xs),Math.max(...ys)];}
+const pth = p => "M"+p.map(q=>q[0].toFixed(1)+" "+(-q[1]).toFixed(1)).join("L")+"Z";
+function drawSite(s, opts){
+  const o = Object.assign({margin:60, only:null, labels:true, uid:"m"}, opts||{});
+  const pts = s.parcel.concat(...s.buildings.map(b=>b.polygon));
+  let [x0,y0,x1,y1] = bbox(pts); x0-=o.margin; y0-=o.margin; x1+=o.margin; y1+=o.margin;
+  const w=x1-x0, h=y1-y0, vb=`${x0} ${-y1} ${w} ${h}`, k=Math.max(w/720,h/540);
+  let g = `<defs><clipPath id="${o.uid}c"><rect x="${x0}" y="${-y1}" width="${w}" height="${h}"/></clipPath>
+    <pattern id="${o.uid}h" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="6" fill="rgba(242,123,44,.16)"/><line x1="0" y1="0" x2="0" y2="6" stroke="#F27B2C" stroke-width="2"/></pattern></defs>`;
+  g += `<g clip-path="url(#${o.uid}c)">`;
+  const layers = o.only ? [o.only] : ["extreme","hq100","hq10","flash"].filter(k=>state.layers[k]);
+  ["extreme","hq100","hq10","flash"].filter(k=>layers.includes(k)).forEach(k=>{
+    const sc=SCEN.find(x=>x.k===k);
+    (s.zones[k]||[]).forEach(z=>{g+= k==="flash"?`<path d="${pth(z)}" fill="url(#${o.uid}h)" stroke="#F27B2C" stroke-width="1"/>`:`<path d="${pth(z)}" fill="${sc.col}" fill-opacity="${sc.op}" stroke="${sc.col}" stroke-width="1"/>`;});
+  });
+  if(s.river.length) g += `<path d="M${s.river.map(q=>q[0]+" "+(-q[1])).join("L")}" fill="none" stroke="var(--river)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" opacity=".85"/>`;
+  g += `</g>`;
+  if(o.only || state.layers.parcel) g += `<path d="${pth(s.parcel)}" fill="none" stroke="var(--yellow)" stroke-width="1.6" stroke-dasharray="5 4"/>`;
+  s.buildings.forEach(b=>{
+    const hit = layers.some(k=>part(b.polygon,s.zones[k]||[]).pct>0);
+    g += `<path d="${pth(b.polygon)}" fill="#E9EEFB" fill-opacity=".92" stroke="${hit?"#FF6B6B":"#fff"}" stroke-width="${hit?2.4:1.2}"><title>${esc(b.label)} ${esc(b.id)}</title></path>`;
+    if(o.labels){const [bx0,by0,bx1,by1]=bbox(b.polygon), fs=Math.min(13*k,(bx1-bx0)*0.9/(b.label.length*0.6));
+      if(fs>=8*k) g+=`<text x="${(bx0+bx1)/2}" y="${-(by0+by1)/2+fs/3}" text-anchor="middle" font-size="${fs}" font-weight="700" fill="#041D58">${esc(b.label)}</text>`;}
+  });
+  g += `<circle cx="0" cy="0" r="${o.labels?4*k:3.2}" fill="var(--or)" stroke="#fff" stroke-width="${o.labels?k:1}"><title>Address point (BD-Adresses)</title></circle>`;
+  if(o.labels){
+    const sb=50, sx=x0+16*k, sy=-y0-16*k;
+    g += `<g font-size="${12*k}" fill="#B8C6EA"><line x1="${sx}" y1="${sy}" x2="${sx+sb}" y2="${sy}" stroke="#fff" stroke-width="${2*k}"/><text x="${sx}" y="${sy-6*k}">${sb} m</text>
+      <g transform="translate(${x1-20*k} ${-y1+22*k}) scale(${k})"><path d="M0 -10L6 6L0 2L-6 6Z" fill="#fff"/><text x="0" y="20" text-anchor="middle" font-size="12">N</text></g>`;
+    const n=s.neighbours;
+    if(n){[["fire_station","Fire station "+n.fire_station.km+" km","#6FE0C2",n.fire_station]].concat(n.seveso.found?[["seveso","Seveso "+n.seveso.km+" km","#FF9C9C",n.seveso]]:[]).forEach(([,t,c,v])=>{
+      const a=(90-v.bearing_deg)*Math.PI/180, cx=(x0+x1)/2, cy=(y0+y1)/2, dx=Math.cos(a), dy=Math.sin(a), pad=12*k;
+      const tt=Math.min(Math.abs(dx)>1e-6?(w/2-pad)/Math.abs(dx):1e9, Math.abs(dy)>1e-6?(h/2-pad)/Math.abs(dy):1e9);
+      const ex=cx+tt*dx, ey=cy+tt*dy;
+      g += `<g fill="${c}"><circle cx="${ex}" cy="${-ey}" r="${5*k}"/><text x="${ex+(dx>0.3?-10*k:dx<-0.3?10*k:0)}" y="${-ey+(dy>0?20*k:-10*k)}" text-anchor="${dx>0.3?"end":dx<-0.3?"start":"middle"}" font-weight="600">${t}</text></g>`;
+    });}
+    g += `</g>`;
+  }
+  return `<svg viewBox="${vb}" role="img" aria-label="Site ${s.id}: parcel, buildings and zones">${g}</svg>`;
+}
+function renderTabs(){
+  $("siteTabs").innerHTML = GEO.sites.map(s=>`<button type="button" data-s="${s.id}" aria-pressed="${s.id===state.site}">${s.id} · ${esc(s.use.split(" (")[0])}</button>`).join("");
+  $("layerToggles").innerHTML = SCEN.map(sc=>`<label><input type="checkbox" data-l="${sc.k}" ${state.layers[sc.k]?"checked":""}><span class="sw" style="background:${sc.k==="flash"?"repeating-linear-gradient(45deg,#F27B2C 0 2px,transparent 2px 5px)":sc.col};opacity:${sc.k==="flash"?1:Math.min(1,sc.op+.3)}"></span>${sc.name}</label>`).join("")
+    + `<label><input type="checkbox" data-l="parcel" ${state.layers.parcel?"checked":""}><span class="sw" style="border:2px dashed var(--yellow)"></span>Parcel</label>`;
+}
+function renderMap(){
+  const s=site(state.site);
+  if(!s.buildings.length){
+    $("mapBox").innerHTML = `<div style="padding:60px 28px;text-align:center;color:var(--soft)"><span class="pill nf">not found</span><p style="margin-top:12px">The request gives <b>${esc(s.requested_address)}</b>. BD-Adresses matches the street only (accuracy ${s.geocode.accuracy}, ratio ${s.geocode.ratio}): many buildings, none chosen. Nothing is drawn rather than a guessed site.</p></div>`;
+  } else $("mapBox").innerHTML = drawSite(s);
+  const a=s.addr;
+  let html = `<h3>Site ${s.id} · ${esc(s.use.split(" (")[0])}</h3><div class="addr">${a?`${esc(a.numero)}, ${esc(a.rue)}, L-${esc(a.code_postal)} ${esc(a.localite)} <span class="src">(${esc(a.commune)}, LUREF ${esc(a.coord_est_luref)} / ${esc(a.coord_nord_luref)})</span>`:esc(s.requested_address)}</div>`;
+  if(s.buildings.length){
+    html += `<table><thead><tr><th>Scenario</th>${s.buildings.map(b=>`<th>${esc(b.label)}</th>`).join("")}<th>Parcel</th></tr></thead><tbody>`+
+      SCEN.map(sc=>{const r=s.shares[sc.k];return `<tr><td>${sc.name}</td>${r.each.map(e=>`<td>${pill(e)}</td>`).join("")}<td>${pill(r.parcel)}</td></tr>`;}).join("")+`</tbody></table>`;
+    const n=s.neighbours;
+    html += `<ul><li><b>Footprint</b> ${s.buildings.map(b=>`${esc(b.label)} ${fmt(aire(b.polygon))} m², ${b.levels_from_3d} level${b.levels_from_3d>1?"s":""} (3D 2023)`).join("; ")}</li>
+      <li><b>Parcel</b> ${fmt(aire(s.parcel))} m² (PCN)</li>
+      <li><b>Seveso within 2 km</b> ${n.seveso.found?`yes, ${esc(n.seveso.tier)}, ${n.seveso.km} km`:"none"}</li>
+      <li><b>Nearest fire and rescue centre</b> ${n.fire_station.km} km, straight line</li>
+      <li class="src">Geocoded locally: accuracy ${s.geocode.accuracy}, ratio ${s.geocode.ratio}, ${esc(s.geocode.method)}.</li></ul>`;
+  } else html += `<ul><li><span class="pill nf">not found</span> Building, parcel, zones, neighbours: nothing until the applicant gives the number or a plan of the site.</li><li class="src">Next step: ask the address with its number; never look it up on the business register by script.</li></ul>`;
+  $("sitePanel").innerHTML = html;
+}
+renderTabs(); renderMap();
+$("siteTabs").addEventListener("click", e=>{const b=e.target.closest("button");if(!b)return;state.site=b.dataset.s;renderTabs();renderMap();});
+$("layerToggles").addEventListener("change", e=>{const k=e.target.dataset.l;if(!k)return;state.layers[k]=e.target.checked;renderMap();});
+
+
+(function(){
+  const pc = r => r.pct>0?fmt(r.pct,r.pct<10?1:0)+"% in":"out", pv = r => fmt(r.pct,r.pct<10?1:0)+"%";
+  const A=site("A").shares.flash, B=site("B").shares, C=site("C").shares;
+  const cases = [
+    {s:"A", k:"flash", t:"The parcel is in, the building is out",
+     p:`Runoff from heavy rain crosses the access road: ${pv(A.parcel)} of the parcel, none of the office block. A parcel rule would flag the head office; the building says no surcharge. Keep one question: is there a basement ramp or a server room below ground on that side?`,
+     v:[["Parcel",pc(A.parcel)],["Building",pc(A.building)]]},
+    {s:"B", k:"hq100", t:"Different answer by scenario",
+     p:`The Alzette's 100-year flood takes ${pv(B.hq100.parcel)} of the parcel (the truck yard) but not the warehouse; the extreme flood reaches ${pv(B.extreme.building)} of the warehouse. Parcel says HQ100; building says extreme only. Ask what is stored outdoors, and what sits low inside.`,
+     v:[["Parcel, HQ100",pc(B.hq100.parcel)],["Building, HQ100",pc(B.hq100.building)],["Parcel, extreme",pc(B.extreme.parcel)],["Building, extreme",pc(B.extreme.building)]]},
+    {s:"C", k:"hq100", t:"The parcel understates the building",
+     p:`A long parcel by the Sûre: only ${pv(C.hq100.parcel)} of it in HQ100, so a "more than half the plot" rule says out. But the workshop sits at the river end: ${pv(C.hq100.each[0])} of it in HQ100 and ${pv(C.hq10.each[0])} in HQ10. The storage annex, on the same parcel, is out.`,
+     v:[["Parcel, HQ100",pc(C.hq100.parcel)],["Workshop, HQ100",pc(C.hq100.each[0])],["Workshop, HQ10",pc(C.hq10.each[0])],["Annex, HQ100",pc(C.hq100.each[1])]]}
+  ];
+  $("cases").innerHTML = cases.map((c,i)=>`<div class="case"><div class="k">Case ${i+1} · site ${c.s} · ${SCEN.find(x=>x.k===c.k).name}</div><h3>${c.t}</h3>${drawSite(site(c.s),{only:c.k,labels:false,margin:25,uid:"c"+i})}<p>${c.p}</p><div class="verdict">${c.v.map(([l,v])=>`<div>${l}<b>${v}</b></div>`).join("")}</div></div>`).join("");
+})();
+
+
+(function(){
+  const card = (key, note) => {const k=KF[key], f=k.f; if(!f) return `<div class="kpi"><div class="l">${k.t}</div><div class="v"><span class="pill nf">not found</span></div><div class="d">${k.ids.map(i=>`<code>${i}</code>`).join(" ")}</div></div>`;
+    const d = f.n1? (Math.abs(f.n)-Math.abs(f.n1))/Math.abs(f.n1)*100 : null;
+    return `<div class="kpi"><div class="l">${k.t} · ${f.year}</div><div class="v">${f.n<0?"−":""}${M(f.n)}</div><div class="d">${f.year-1}: ${M(f.n1)}${d!==null?` <span class="${(d>=0)===(f.n>=0)?"up":"down"}">${d>=0?"+":""}${fmt(d,1)}%</span>`:""}</div><div class="d"><code>${f.id}</code> · eCDF ${f.ecdf} · ${f.type}${note?" · "+note:""}</div></div>`;};
+  $("kpis").innerHTML = ["turnover","result","assets","equity","debts","cash","staff","tangible","land","machines"].map(k=>card(k)).join("");
+  const eq=KF.equity.f.n/KF.assets.f.n*100;
+  $("cdbFacts").innerHTML = [
+    `<b>Size</b>: turnover ${M(KF.turnover.f.n)} and staff costs ${M(KF.staff.f.n)} in ${YEAR}: a mid-size company. Headcount is not in the deposit: ask it.`,
+    `<b>Solidity</b>: equity is ${fmt(eq,0)}% of the balance sheet; result ${KF.result.f.n>=0?"positive":"negative"} two years running.`,
+    `<b>Assets at stake</b>: land and buildings ${M(KF.land.f.n)}, machinery ${M(KF.machines.f.n)}, other equipment and vehicles ${M(champ(["2_AutInsta_2010"]).n)}, at book value (after depreciation). Insured values are reinstatement values: ask them per site.`,
+    `<b>Not in the deposit</b>: no address, no site list, no activity code, no headcount. Banks and insurers do not file here.`,
+    `<b>Year</b>: exercise ${YEAR}, deposited ${DEPOSIT}. A deposit can come up to seven months after year end: say the year next to every figure.`
+  ].map(t=>`<li>${t}</li>`).join("");
+  $("cdbRaw").textContent = CDB;
+  $("dlXml").addEventListener("click", ()=>{const b=new Blob([CDB],{type:"application/xml"});const a=document.createElement("a");a.href=URL.createObjectURL(b);a.download="centrale_des_bilans_fictive_2025.xml";a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);});
+})();
+
+
+const Q = [];
+function q(section, question, status, value, source){Q.push({section, question, status, value, source});}
+(function(){
+  const c="Company";
+  q(c,"Legal name and RCS number","pre",`${NAME}, ${RCS}`,"Centrale des bilans (STATEC)");
+  q(c,"LEI and group links","nf","","GLEIF golden copy: no record for this RCS number");
+  q(c,"Registered office address","ask","","GLEIF has none here; the business register is not read by script");
+  q(c,"Activity","ask",GEO.company.activity.split(" (")[0],"declared by the applicant; no open NACE code");
+  q(c,`Turnover ${YEAR}`,"pre",M(KF.turnover.f.n),"Centrale des bilans, 7_Chida_2010");
+  q(c,`Tangible fixed assets ${YEAR} (book value)`,"pre",M(KF.tangible.f.n),"Centrale des bilans, 2_ImmoCorp_2010");
+  q(c,`Staff costs ${YEAR}`,"pre",M(KF.staff.f.n),"Centrale des bilans, 6_Perso_2010");
+  q(c,"Headcount","ask","","not in the deposit");
+  q(c,"Losses over the last five years, by peril (fire, water, flood, theft, machinery)","ask","","applicant");
+  q(c,"Current cover and its expiry date","ask","","applicant");
+  q(c,"Directors and contact persons","no","not collected","personal data: out of scope without purpose and DPO opinion");
+  GEO.sites.forEach(s=>{
+    const t=`Site ${s.id} · ${s.use.split(" (")[0]}`, a=s.addr;
+    if(!s.buildings.length){
+      q(t,"Address with its number","ask","",`request says "${s.requested_address}"; BD-Adresses: street only (accuracy ${s.geocode.accuracy})`);
+      q(t,"Building, flood zones, neighbours","nf","","no building identified: nothing pre-filled rather than a guess");
+      q(t,"Use, values, protections","ask","","applicant");
+      return;
+    }
+    q(t,"Address and building","pre",`${a.numero}, ${a.rue}, L-${a.code_postal} ${a.localite} · ${s.buildings.map(b=>b.id).join(", ")}`,"BD-Adresses (CC0), footprints 2023 (ACT)");
+    q(t,"Footprint and levels","pre",s.buildings.map(b=>`${b.label} ${fmt(aire(b.polygon))} m², ${b.levels_from_3d} level${b.levels_from_3d>1?"s":""}`).join("; "),"footprints and 3D 2023 (ACT)");
+    const fl = SCEN.map(sc=>{const r=s.shares[sc.k].building;return `${sc.name} ${r.pct>0?fmt(r.pct,r.pct<10?1:0)+"%":"out"}`;}).join(" · ");
+    q(t,"Building in flood zones (share of footprint)","pre",fl,"AGE hazard maps (CC0), intersected locally");
+    const n=s.neighbours;
+    q(t,"Seveso establishment within 2 km","pre",n.seveso.found?`yes, ${n.seveso.tier}, ${n.seveso.km} km`:"none","Seveso III list (ITM)");
+    q(t,"Nearest fire and rescue centre","pre",`${n.fire_station.km} km, straight line`,"CGDIS (CC0)");
+    q(t,"Use of the site, confirmed","ask",s.use,"declared by the applicant");
+    q(t,"Values to insure: building, contents, stock, machinery","ask","","applicant (book values above are not insured values)");
+    q(t,"Fire protection: sprinklers, detection, alarm to a monitoring centre","ask","","applicant, then visit");
+    q(t,"Construction: walls, roof, insulating panels","ask","","applicant (3D gives height, not material)");
+    if(Math.max(...SCEN.map(sc=>s.shares[sc.k].building.pct))>0)
+      q(t,"Flood protection: floor height, barriers, stock off the floor, electrical cabinets raised","ask","","visit");
+    if(s.id==="C") q(t,"Fuel tank: volume, anchoring, retention","ask","","visit");
+    if(n.seveso.found) q(t,"Knows the external emergency plan of the Seveso neighbour","ask","","visit");
+  });
+  let cur="";
+  $("qTable").innerHTML = `<thead><tr><th>Question</th><th>Status</th><th>Answer</th><th>Source</th></tr></thead><tbody>`+Q.map((x,i)=>{
+    const head = x.section!==cur ? (cur=x.section, `<tr class="qh"><td colspan="4">${esc(x.section)}</td></tr>`) : "";
+    const st = {pre:'<span class="pill pre">pre-filled</span>',ask:'<span class="pill ask">to ask</span>',nf:'<span class="pill nf">not found</span>',no:'<span class="pill no">not collected</span>'}[x.status];
+    const ans = x.status==="ask" ? `<input data-i="${i}" value="${esc(x.value)}" placeholder="answer" aria-label="${esc(x.question)}">` : (x.value?`<b>${esc(x.value)}</b>`:"");
+    return head+`<tr><td>${esc(x.question)}</td><td>${st}</td><td>${ans}</td><td class="src">${esc(x.source)}</td></tr>`;
+  }).join("")+`</tbody>`;
+  $("qTable").addEventListener("input", e=>{const i=e.target.dataset.i;if(i!==undefined)Q[i].value=e.target.value;});
+  $("dlAnswers").addEventListener("click", ()=>{const b=new Blob([JSON.stringify({company:RCS,fictitious:true,questions:Q},null,2)],{type:"application/json"});const a=document.createElement("a");a.href=URL.createObjectURL(b);a.download="questionnaire_"+RCS+".json";a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);});
+})();
+
+
+(function(){
+  const C=site("C").shares, B=site("B").shares, A=site("A").shares, pc=r=>fmt(r.pct,r.pct<10?1:0)+"%";
+  const v = [
+    ["C","Workshop by the Sûre, first",`${pc(C.hq100.each[0])} of the workshop in HQ100, ${pc(C.hq10.each[0])} in HQ10: the most exposed building, with a fuel tank and the spare parts. On site: the floor level against the river, the electrical cabinets and compressors, flood barriers at the doors, the tank anchored and retained, the parts store off the floor, who closes the site on a flood warning.`,"half a day"],
+    ["B","Warehouse at Bettembourg",`Building out of HQ100, ${pc(B.extreme.building)} in the extreme flood; the truck yard is in HQ100. Upper-tier Seveso site at ${site("B").neighbours.seveso.km} km. On site: sprinklers in the racks and stock height, what stays outdoors overnight, the loading docks' level, whether the site knows the neighbour's external emergency plan.`,"half a day"],
+    ["A","Head office, by phone first",`Building out of every flood zone; runoff on ${pc(A.flash.parcel)} of the parcel along the access road. One question before any visit: is anything below ground on that side (ramp, archive, server room)?`,"a call"],
+    ["D","Depot at Contern, not yet",`Not found: no number, no building. No visit is planned on a guessed site; the address comes first.`,"after the address"]
+  ];
+  $("visitList").innerHTML = v.map(([s,t,p,d],i)=>`<div class="box"><div class="rk">${i+1}</div><div><h3>Site ${s} · ${t} <span class="pill ${s==="D"?"nf":"pre"}">${d}</span></h3><p>${p}</p></div></div>`).join("");
+})();
+
+
+(function(){
+  const S = [
+    ["Centrale des bilans, annual deposits (HVD Annex 5)","STATEC, data.public.lu","https://data.public.lu/fr/datasets/hvd-annex-5-companies-and-company-ownership-annual-deposits-2025/","CC BY-SA 4.0 seen on the 2026 quarter; varies by year: check each page, cite STATEC","Balance sheet and P&L by RCS number (format reproduced; amounts fictitious)"],
+    ["GLEIF LEI golden copy","GLEIF","https://www.gleif.org/en/lei-data/gleif-golden-copy","CC0","Legal and head office address, group links; about one company in five"],
+    ["BD-Adresses","ACT, data.public.lu","https://data.public.lu/fr/datasets/adresses-georeferencees-bd-adresses/","CC0","Every address point; local geocoding (format reproduced; rows illustrative)"],
+    ["Building footprints and 3D 2023","ACT, data.public.lu","https://data.public.lu/fr/datasets/base-de-donnees-nationale-des-batiments-3d-2023/","CC0 (check page)","The building at each address, its area and height"],
+    ["Plan cadastral numérisé (PCN)","ACT, data.public.lu","https://data.public.lu/fr/datasets/plan-cadastral-numerise-pcn/","CC BY 4.0, cite ACT","The parcel, to compare with the building"],
+    ["Flood hazard maps HQ10, HQ100, extreme","AGE, data.public.lu","https://data.public.lu/fr/datasets/flood-hazard-maps-100-year-flood/","CC0","River flood zones, intersected with each footprint"],
+    ["Flash-flood hazard map","AGE, data.public.lu","https://data.public.lu/fr/datasets/flashflood-hazard-map/","CC0","Runoff from heavy rain, outside river beds"],
+    ["Seveso III installations","ITM, data.public.lu","https://data.public.lu/en/datasets/seveso-iii-directive-seveso-installations/","CC0 per INSPIRE record (check page)","Dangerous neighbours and their tier"],
+    ["Fire and rescue centres","CGDIS, data.public.lu","https://data.public.lu/fr/datasets/emplacements-des-centres-dincendie-et-de-secours/","CC0","Distance to the nearest centre"],
+    ["OpenStreetMap","OpenStreetMap contributors","https://www.openstreetmap.org/copyright","ODbL, © OpenStreetMap contributors","Named business sites, roads (match with care)"]
+  ];
+  $("srcTable").innerHTML = `<thead><tr><th>Source</th><th>Producer</th><th>Licence</th><th>What this track draws from it</th><th>Downloaded</th></tr></thead><tbody>`+
+    S.map(([n,p,u,l,w])=>`<tr><td><a href="${u}" rel="noopener">${esc(n)}</a></td><td>${esc(p)}</td><td>${esc(l)}</td><td>${esc(w)}</td><td class="src">not in this prototype</td></tr>`).join("")+`</tbody>`;
+})();
+})();
+</script>
+</body></html>
