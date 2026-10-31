@@ -11,12 +11,11 @@ The public site of the challenge: the presentation, the data catalogue and the f
 4. `data.html`: the public data to use, with links, producers and licences, and the fictitious Foyer data.
 5. `collect/` (in the repository only, linked from `data.html` and `tracks.html`, never shown as a page): the collection
    scripts, one per open data source, copied from the pack's `collecte/` folder, MIT licence.
-6. `demos.html` and `demos/`: the demos (the author, 30-10: « plusieurs démos, pour amorcer la construction, et ne pas
-   trop faire non plus »): one starter per track and two for the ideas, copied from `../prototypes/` with their code
-   comments removed (they are written for the team), and `explorer.html` with `explorer/`, « Around an address »: pick an
-   address and see everything public around it, found in the browser from static files; nothing is sent anywhere (built
-   from `../explorateur/`, illustrative data until the real collection has run, a list of the covered addresses so
-   nothing is « not found »).
+6. `demos/`: the demos, one starter per track and two for the ideas, copied from `../prototypes/` with their code
+   comments removed. Since 31-10 each demo is a « ▶ Demo » button on its track (on `tracks.html`, on each track page and on
+   `ideas.html`), not a page of its own (the author: « pourquoi j'ai une page "demos", alors je peux très bien mettre un
+   bouton demo dans tracks.html pour chaque track »); `demos.html` keeps its address and sends to `tracks.html`.
+
 7. `data/`: the fictitious Foyer data (a smoothed 500 m grid, communes, cantons, road segments), the commune boundaries, two heatmaps and the data dictionary.
 
 Everything Foyer provides here is fictitious: no policy, no claim, no personal data.
