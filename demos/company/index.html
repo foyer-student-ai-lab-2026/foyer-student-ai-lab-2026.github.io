@@ -2,7 +2,7 @@
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Track 5 prototype, a company and its subscription</title>
 <meta name="theme-color" content="#020B2B">
-<meta name="description" content="Student AI Lab 2026, track 5: every site of a fictitious logistics company, each building against the flood zones, the filed accounts and the underwriting questionnaire. Self-contained, no server, no external request.">
+<meta name="description" content="Student AI Lab 2026, track 5: every site a fictitious logistics company declares, each building against the flood zones, the filed accounts and the underwriting questionnaire. Self-contained, no server, no external request.">
 <style>
 :root{--navy:#041D58;--deep:#020B2B;--blue:#20439D;--bar:#2857C8;--lblue:#7C9ADE;--mid:#173682;--ink:#E9EEFB;--soft:#B8C6EA;--dim:#8193BF;
 --line:rgba(124,154,222,.22);--glass:rgba(255,255,255,.045);--or:#F27B2C;--green:#2FBF9B;--yellow:#FFD166;--red:#FF6B6B;--river:#4FC3F7}
@@ -122,8 +122,8 @@ footer p{margin-bottom:8px;max-width:900px}
 <main id="top">
 <div class="hero"><div class="wrap">
   <div class="k">Student AI Lab 2026 · Track 5 · A company and its subscription</div>
-  <h1>Every site, every building, before the quote.</h1>
-  <p class="sub">A logistics company asks for a multi-risk quote. The underwriter needs each site, the building that stands on it, what that building risks, and the company's filed accounts. This page does it from open data only, locally, and says <b>not found</b> where the open data stops.</p>
+  <h1>Every declared site, every building, before the quote.</h1>
+  <p class="sub">A logistics company asks for a multi-risk quote. The underwriter needs each site, the building that stands on it, what that building risks, and the company's filed accounts. No open source lists the sites of a company, nor even gives its address: the sites and their addresses come from the company itself, in its request. The open data then say, for each declared address, what the building risks; this page does it locally and says <b>not found</b> where the open data stops.</p>
   <div class="company" id="company"></div>
   <p class="band"><b>Everything about the company is fictitious</b>: its name, its RCS number, its sites, its accounts (amounts invented, in the exact format of the Centrale des bilans). The building and zone shapes are synthetic, drawn to show the method; the real layers come from the collect scripts. No director, no contact person, no request to any outside service: this page loads nothing from the network.</p>
 </div></div>
@@ -141,7 +141,7 @@ footer p{margin-bottom:8px;max-width:900px}
 
 <section id="sites"><div class="wrap">
   <h2>Site by site</h2>
-  <p class="lead">One row per declared site. The shares are computed in this page from the shapes (zone clipped by the footprint, area over area), the same way as <code>scripts/intersect_sites.py</code>. Building first; the parcel is shown next to it because it often says something else.</p>
+  <p class="lead">One row per site the applicant declares in its request (no open register gives a company's sites). The shares are computed in this page from the shapes (zone clipped by the footprint, area over area), the same way as <code>scripts/intersect_sites.py</code>. Building first; the parcel is shown next to it because it often says something else.</p>
   <div class="tw"><table id="sitesTable"></table></div>
   <p class="src" style="margin-top:8px">In: some part of the footprint lies in the zone. Share: area in the zone over footprint area. Sources: BD-Adresses (ACT, CC0), building footprints 2023 (ACT), PCN parcels (ACT, CC BY 4.0), flood and flash-flood hazard maps (AGE, CC0), Seveso (ITM), CGDIS fire and rescue centres (CC0). Shapes synthetic in this prototype.</p>
 </div></section>
@@ -637,6 +637,8 @@ const M = v => fmt(Math.abs(v)/1e6, 2)+" M€";
 $("company").innerHTML = [
   ["Legal name", NAME, "Centrale des bilans, LegalUnitName · fictitious"],
   ["RCS number", RCS, "Centrale des bilans, RcsNumber · fictitious"],
+  ["Registered office", GEO.sites[0].requested_address, "declared in the request (site A); no open source gives a company's address"],
+  ["Declared sites", GEO.sites.map(x=>x.id).join(", "), "from the request; no open register lists a company's sites"],
   ["LEI", "not found", "GLEIF golden copy covers about one company in five"],
   ["Activity code (NACE)", "not found", "no open source gives it; declared: "+GEO.company.activity.split(" (")[0].toLowerCase()],
   ["Latest accounts", `${YEAR}, filed ${DEPOSIT}`, "complete balance sheet and P&L"],
@@ -772,7 +774,7 @@ function q(section, question, status, value, source){Q.push({section, question, 
   const c="Company";
   q(c,"Legal name and RCS number","pre",`${NAME}, ${RCS}`,"Centrale des bilans (STATEC)");
   q(c,"LEI and group links","nf","","GLEIF golden copy: no record for this RCS number");
-  q(c,"Registered office address","ask","","GLEIF has none here; the business register is not read by script");
+  q(c,"Registered office address","pre",GEO.sites[0].requested_address,"the applicant's request (site A, the head office); no open source gives it: GLEIF only for a company with an LEI, the business register is never read by script");
   q(c,"Activity","ask",GEO.company.activity.split(" (")[0],"declared by the applicant; no open NACE code");
   q(c,`Turnover ${YEAR}`,"pre",M(KF.turnover.f.n),"Centrale des bilans, 7_Chida_2010");
   q(c,`Tangible fixed assets ${YEAR} (book value)`,"pre",M(KF.tangible.f.n),"Centrale des bilans, 2_ImmoCorp_2010");
